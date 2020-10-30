@@ -5,8 +5,11 @@
 //  Created by Diego Otero Mata on 30/10/2020.
 //
 
-import <# Library #>
+import Foundation
 
-extension Sequence_Extensions {
-    <# extension functions #>
+extension Sequence where Iterator.Element: Hashable {
+    func unique() -> [Iterator.Element] {
+        var seen: Set<Iterator.Element> = []
+        return filter { seen.insert($0).inserted }
+    }
 }

@@ -5,28 +5,29 @@
 //  Created by Diego Otero Mata on 28/10/2020.
 //
 
-import UIKit
 import RxSwift
+import UIKit
 
 // MARK: Protocols for presenter
 
 protocol PresenterToViewPokemonDetailsProtocol: class {
-    var presenter : ViewToPresenterPokemonDetailsProtocol? { get set }
+    var presenter: ViewToPresenterPokemonDetailsProtocol? { get set }
 }
 
-protocol PresenterToInteractorPokemonDetailsProtocol : class {
-    
+protocol PresenterToInteractorPokemonDetailsProtocol: class {
+    func fetchPokemonDetailsBy(id: Int64) -> ReplaySubject<Pokemon?>
 }
 
-protocol PresenterToRouterPokemonDetailsProtocol : class {
-    
-}
+protocol PresenterToRouterPokemonDetailsProtocol: class {}
 
 // MARK: Protocols for View
 
-protocol ViewToPresenterPokemonDetailsProtocol : class {
+protocol ViewToPresenterPokemonDetailsProtocol: class {
     var router: PresenterToRouterPokemonDetailsProtocol? { get set }
     var interactor: PresenterToInteractorPokemonDetailsProtocol? { get set }
     var view: PresenterToViewPokemonDetailsProtocol? { get set }
+    var pokemon: Pokemon? { get set }
+    var version: Version? { get set }
+    var fetchedInfo: ReplaySubject<Pokemon?> { get set }
     func viewIsReady()
 }

@@ -10,7 +10,7 @@ import ObjectMapper
 
 final class PokemonSpecieApiObject: ObjectMapperManager<PokemonSpecieApiObject>, Mappable {
     fileprivate enum Values: String {
-        case id, names, flavor_text_entries, is_baby, is_legendary, is_mythical
+        case id, names, flavor_text_entries, is_baby, is_legendary, is_mythical, order
     }
 
     internal var id: Int64?
@@ -19,6 +19,7 @@ final class PokemonSpecieApiObject: ObjectMapperManager<PokemonSpecieApiObject>,
     internal var baby: Bool?
     internal var legendary: Bool?
     internal var mythical: Bool?
+    internal var order: Int?
 
     override func mapping(map: Map) {
         id <- map[Values.id.rawValue]
@@ -27,5 +28,6 @@ final class PokemonSpecieApiObject: ObjectMapperManager<PokemonSpecieApiObject>,
         baby <- map[Values.is_baby.rawValue]
         legendary <- map[Values.is_legendary.rawValue]
         mythical <- map[Values.is_mythical.rawValue]
+        order <- map[Values.order.rawValue]
     }
 }

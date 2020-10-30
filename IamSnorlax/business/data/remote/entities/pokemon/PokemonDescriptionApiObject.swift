@@ -14,8 +14,8 @@ final class PokemonDescriptionApiObject: ObjectMapperManager<PokemonDescriptionA
     }
 
     internal var text: String?
-    internal var language: [DataSetApiObject]?
-    internal var version: [DataSetApiObject]?
+    internal var language: DataSetApiObject?
+    internal var version: DataSetApiObject?
 
     override func mapping(map: Map) {
         text <- map[Values.flavor_text.rawValue]

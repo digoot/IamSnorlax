@@ -9,14 +9,15 @@ import UIKit
 
 final class VersionCell: UITableViewCell {
     
-    static let identifier = String(describing: GenerationCell.self)
+    static let identifier = String(describing: VersionCell.self)
 
     var name = UILabel()
-    var generation: Generation? {
+    var version: Version? {
         didSet {
             configureCell()
         }
     }
+    var locale: String?
     
     override func didMoveToSuperview() {
         setupView()
@@ -26,9 +27,11 @@ final class VersionCell: UITableViewCell {
     // MARK: - Functions
     
     fileprivate func setupView() {
+        name.isSkeletonable = true
         contentView.addSubview(name)
+        backgroundColor = UIConstants.shared.backgroundColor
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor(named: "secondary-light")
+        backgroundView.backgroundColor = UIColor(named: "secondary")
         selectedBackgroundView = backgroundView
     }
     
@@ -40,22 +43,23 @@ final class VersionCell: UITableViewCell {
     }
     
     fileprivate func configureCell() {
-        guard let languageCode = NSLocale.current.languageCode else { return }
-        name.text = generation?.names.filter("locale == %@", languageCode).first?.value
-        name.font = UIFont(name: "pokemon-font", size: 13)
+        guard let locale = locale else { return }
+        name.text = version?.names.filter("locale == %@", locale).first?.value ?? UIConstants.shared.noData
+        name.font = Font(ofSize: 13).build()
     }
     
-    func setupInitialState(generation: Generation) {
-        self.generation = generation
+    func setupInitialState(version: Version, locale: String?) {
+        self.locale = locale
+        self.version = version
     }
     
     static func buildCell(
-        _ tableView: UITableView, cellForRowAt indexPath: IndexPath, generation: Generation
-    ) -> GenerationCell {
+        _ tableView: UITableView, cellForRowAt indexPath: IndexPath, version: Version, locale: String?
+    ) -> VersionCell {
         guard
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? GenerationCell
-        else { return GenerationCell() }
-        cell.setupInitialState(generation: generation)
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? VersionCell
+        else { return VersionCell() }
+        cell.setupInitialState(version: version, locale: locale)
         return cell
     }
 

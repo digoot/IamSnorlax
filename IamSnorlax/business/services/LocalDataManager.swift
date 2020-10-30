@@ -1,9 +1,8 @@
 //
 //  LocalDataManager.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 11/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Foundation
@@ -64,7 +63,7 @@ class LocalDataManager: Databaseable {
          }
          */
         if _configuration == nil {
-            _configuration = DatabaseConfiguration(name: "Dogoplay",
+            _configuration = DatabaseConfiguration(name: "IamSnorlax",
                                                    type: .disk,
                                                    debug: .all,
                                                    schemaVersion: Migrations.schemaVersion,

@@ -21,10 +21,12 @@ class GenerationListInteractor: PresenterToInteractorGenerationListProtocol {
                 repository.fetchGenerationWith(id: id).subscribe(onNext: { generation in
                     guard let generation = generation else { return }
                     generations.append(generation)
+                    if generations.count == ids.count {
+                        subject.onNext(generations)
+                        subject.onCompleted()
+                    }
                 }).disposed(by: self.disposeBag)
             }
-            subject.onNext(generations)
-            subject.onCompleted()
         }).disposed(by: disposeBag)
         return subject
     }

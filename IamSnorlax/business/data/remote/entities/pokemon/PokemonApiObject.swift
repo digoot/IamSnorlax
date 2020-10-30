@@ -10,13 +10,14 @@ import ObjectMapper
 
 final class PokemonApiObject: ObjectMapperManager<PokemonApiObject>, Mappable {
     fileprivate enum Values: String {
-        case id, name, base_experience, height, order, sprites, stats, weight
+        case id, name, base_experience, height, is_default, order, sprites, stats, weight
     }
 
     internal var id: Int64?
     internal var name: String?
     internal var baseExperience: Int?
     internal var height: Int?
+    internal var eligible: Bool?
     internal var weight: Int?
     internal var order: Int?
     internal var stats: [PokemonStatApiObject]?

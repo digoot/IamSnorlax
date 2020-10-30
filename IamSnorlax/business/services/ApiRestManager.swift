@@ -1,9 +1,8 @@
 //
 //  ApiRestManager.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 12/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Alamofire
@@ -28,7 +27,7 @@ enum HTTPMessages: Int {
 class ApiRestManager {
     // MARK: - Variables
 
-    fileprivate var urlEndpoint: String
+    fileprivate var urlApi: String
     fileprivate var session: Session
     fileprivate var sessionDelegate: SessionDelegate
     fileprivate var rootQueue: DispatchQueue
@@ -38,16 +37,16 @@ class ApiRestManager {
 
     // MARK: - Constructor
 
-    init(endpoint: String) {
-        urlEndpoint = endpoint
+    init(url: String) {
+        urlApi = url
         sessionDelegate = SessionDelegate()
         interceptor = Interceptor()
         let configuration = URLSessionConfiguration.default
         configuration.timeoutIntervalForRequest = BusinessConstants.shared.timeoutForRequest
         configuration.timeoutIntervalForResource = BusinessConstants.shared.timeoutForResource
-        rootQueue = DispatchQueue(label: "com.cleventy.Dogoplay.rootQueue")
-        requestQueue = DispatchQueue(label: "com.cleventy.Dogoplay.requestQueue")
-        serializationQueue = DispatchQueue(label: "com.cleventy.Dogoplay.serializationQueue")
+        rootQueue = DispatchQueue(label: "dev.digoot.iamsnorlax.rootQueue")
+        requestQueue = DispatchQueue(label: "dev.digoot.iamsnorlax.requestQueue")
+        serializationQueue = DispatchQueue(label: "dev.digoot.iamsnorlax.serializationQueue")
         session = Session(configuration: configuration, delegate: sessionDelegate, rootQueue: rootQueue,
                           startRequestsImmediately: true, requestQueue: requestQueue,
                           serializationQueue: serializationQueue, interceptor: interceptor, serverTrustManager: nil,
@@ -130,7 +129,7 @@ class ApiRestManager {
     }
 
     fileprivate func buildURLRequest(_ service: String) -> String {
-        return urlEndpoint + service
+        return urlApi + service
     }
 
     fileprivate func proccessAFDataResponse(success: Bool, dataResponse: AFDataResponse<Any>,

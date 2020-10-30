@@ -1,9 +1,8 @@
 //
 //  ApiManager.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 12/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Foundation
@@ -11,17 +10,13 @@ import Foundation
 final class ApiManager {
     // MARK: - Variables
 
-    var stories: ApiStories
-    var auth: ApiAuth
-    var games: ApiGames
+    var api: Api
 
     static let shared = ApiManager()
 
     // MARK: - Constructor
 
     private init() {
-        stories = ApiStories()
-        auth = ApiAuth()
-        games = ApiGames()
+        api = Api()
     }
 }

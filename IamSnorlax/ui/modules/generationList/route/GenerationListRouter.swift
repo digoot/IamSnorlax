@@ -19,14 +19,17 @@ class GenerationListRouter: PresenterToRouterGenerationListProtocol {
     // MARK: Navigation functions
     
     static func navigateToGameList(viewController: UIViewController?) {
-        guard let navigator = viewController?.navigationController else { return }
-        guard let scene: UIViewController = createGameListScene(parent: viewController) else { return }
-        viewController?.show(scene, sender: navigator)
+        guard let scene: UINavigationController = createGameListScene(parent: viewController) else { return }
+        viewController?.show(scene, sender: viewController)
+    }
+    
+    func navigateToVersionList(viewController: UIViewController, groups: [Group]) {
+        VersionListRouter.navigateToVersionList(viewController: viewController, groups: groups)
     }
     
     // MARK: Scene creation functions
     
-    static func createGameListScene(parent: UIViewController?) -> UIViewController? {
+    static func createGameListScene(parent: UIViewController?) -> UINavigationController? {
         guard
             let navigator = storyboard.instantiateInitialViewController() as? UINavigationController,
             let view = navigator.children.first as? GenerationListViewController
@@ -41,7 +44,7 @@ class GenerationListRouter: PresenterToRouterGenerationListProtocol {
         presenter.interactor = interactor
         presenter.router = router
         
-        return view
+        return navigator
     }
     
 }

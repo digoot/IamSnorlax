@@ -1,16 +1,15 @@
 //
 //  ImageManager.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 18/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Kingfisher
 
 class ImageManager {
     static let shared = ImageManager()
-    let cache = ImageCache(name: "DogoplayImages")
+    let cache = ImageCache(name: "IamSnorlaxImages")
     let options: KingfisherOptionsInfo?
 
     private init() {

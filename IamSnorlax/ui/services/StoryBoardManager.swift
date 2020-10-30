@@ -13,10 +13,16 @@ class StoryboardManager {
     static let shared = StoryboardManager()
     
     let generationList: UIStoryboard
+    let versionList: UIStoryboard
+    let pokemonList: UIStoryboard
+    let pokemonDetails: UIStoryboard
     
     // MARK: - Constructor
     private init() {
         generationList = UIStoryboard(name: "GenerationList", bundle: nil)
+        versionList = UIStoryboard(name: "VersionList", bundle: nil)
+        pokemonList = UIStoryboard(name: "PokemonList", bundle: nil)
+        pokemonDetails = UIStoryboard(name: "PokemonDetails", bundle: nil)
     }
     
 }

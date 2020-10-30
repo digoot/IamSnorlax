@@ -87,6 +87,11 @@ final class Api: ApiRestManager {
     }
     
     func fetchPokemon(id: Int64) -> DataRequest? {
+        let service = Endpoint.pokemonSpecies.build(String(id))
+        return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
+    }
+    
+    func fetchPokemonDetails(id: Int64) -> DataRequest? {
         let service = Endpoint.pokemon.build(String(id))
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }

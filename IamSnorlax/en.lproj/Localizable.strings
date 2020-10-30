@@ -5,4 +5,12 @@
   Created by Diego Otero Mata on 28/10/2020.
   
 */
-"generations"
+"generations" = "Generations";
+"game versions" = "Game Versions";
+"pokemons" = "Pokemons";
+"baby.label" = "Baby pokemon";
+"legendary.label" = "Legendary pokemon";
+"mythical.label" = "Mythical pokemon";
+"weight.label" = "Weight: %d hg";
+"height.label" = "Height: %d dm";
+"baseExperience.label" = "Exp. defeating: %d xp";

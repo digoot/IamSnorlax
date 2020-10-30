@@ -1,9 +1,8 @@
 //
 //  ObjectMapperManager.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 13/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Alamofire

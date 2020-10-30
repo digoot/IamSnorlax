@@ -12,13 +12,16 @@ import RxSwift
 
 protocol PresenterToViewGenerationListProtocol: class {
     var presenter: ViewToPresenterGenerationListProtocol? { get set }
+    var dataSource: [Generation]? { get set }
 }
 
 protocol PresenterToInteractorGenerationListProtocol: class {
     func fetchGenerations() -> PublishSubject<[Generation]?>
 }
 
-protocol PresenterToRouterGenerationListProtocol: class {}
+protocol PresenterToRouterGenerationListProtocol: class {
+    func navigateToVersionList(viewController: UIViewController, groups: [Group])
+}
 
 // MARK: Protocols for View
 
@@ -26,5 +29,7 @@ protocol ViewToPresenterGenerationListProtocol: class {
     var router: PresenterToRouterGenerationListProtocol? { get set }
     var interactor: PresenterToInteractorGenerationListProtocol? { get set }
     var view: PresenterToViewGenerationListProtocol? { get set }
+    var generations: PublishSubject<[Generation]?> { get set }
     func viewIsReady()
+    func navigateToVersionList(groups: [Group])
 }

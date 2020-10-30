@@ -1,9 +1,8 @@
 //
 //  DaoManager.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 11/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Foundation

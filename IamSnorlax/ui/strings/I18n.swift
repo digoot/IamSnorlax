@@ -1,9 +1,8 @@
 //
 //  I18n.swift
-//  Dogoplay
+//  IamSnorlax
 //
-//  Created by Carlos Pérez Ponce on 18/08/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
+//  Created by Diego Otero Mata on 18/05/2020.
 //
 
 import Foundation

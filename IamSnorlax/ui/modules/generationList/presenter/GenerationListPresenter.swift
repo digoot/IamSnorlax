@@ -6,31 +6,38 @@
 //
 
 import RxSwift
-//import RxDataSources
 
 class GenerationListPresenter: ViewToPresenterGenerationListProtocol {
-    
-    // MARK: Variables
-    
+    // MARK: - Variables
+
     var view: PresenterToViewGenerationListProtocol?
     var interactor: PresenterToInteractorGenerationListProtocol?
     var router: PresenterToRouterGenerationListProtocol?
-    let disposebag = DisposeBag()
-    
-    // MARK: Functions
-    
+    var generations: PublishSubject<[Generation]?> = PublishSubject()
+
+    let disposeBag = DisposeBag()
+
+    // MARK: - Functions
+
     func viewIsReady() {
         loadGenerations()
     }
-    
-    // MARK: Data fetching
-    
-    func loadGenerations() {
-        interactor?.fetchGenerations().subscribe(onNext: { generations in
-            generations?.forEach({ generation in
-                Log.print.debug(generation)
-            })
-        }).disposed(by: disposebag)
+
+    // MARK: - Data fetching
+
+    fileprivate func loadGenerations() {
+        interactor?.fetchGenerations().bind(to: generations).disposed(by: disposeBag)
+        createSubject()
     }
     
+    fileprivate func createSubject() {
+        generations = PublishSubject()
+    }
+    
+    // MARK: - Navigations
+    
+    func navigateToVersionList(groups: [Group]) {
+        guard let vc = view as? GenerationListViewController else { return }
+        router?.navigateToVersionList(viewController: vc, groups: groups)
+    }
 }

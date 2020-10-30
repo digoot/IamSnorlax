@@ -1,0 +1,6 @@
+framework module Pods_IamSnorlax {
+  umbrella header "Pods-IamSnorlax-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -9,9 +9,7 @@ import Foundation
 import RxSwift
 
 class PokemonDetailsInteractor: PresenterToInteractorPokemonDetailsProtocol {
-    
-    // MARK: Variables
-    
-    let disposeBag = DisposeBag()
-
+    func fetchPokemonDetailsBy(id: Int64) -> ReplaySubject<Pokemon?> {
+        return PokemonRepository().fetchPokemonDetailsBy(id: id)
+    }
 }

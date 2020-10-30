@@ -1,16 +1,15 @@
 //
 //  Resource.swift
-//  Dogoplay
+//  IamSnorlax
 //
 //  Created by Diego Otero Mata on 13/05/2020.
-//  Copyright © 2020 Cleventy. All rights reserved.
 //
 
 import Alamofire
 import Foundation
 import RxSwift
 
-struct DGPError: Error {
+struct IASError: Error {
     var title: String?
     var messages: [Int: String]?
     var code: Int?
@@ -24,16 +23,16 @@ public protocol NetworkResourceProtocol {
     associatedtype Result
 
     func fetchFrom() -> ReadType
-    func fetchFromDataBase() -> Result?
+    func fetchFromDataBase() -> Result
     func fetchFromWebService() -> DataRequest?
     func saveWebServiceResult(with data: AFDataResponse<Any>)
-    func convertToObject(with data: AFDataResponse<Any>) -> Result?
+    func convertToObject(with data: AFDataResponse<Any>) -> Result
 }
 
 class Resource<ResultType>: NetworkResourceProtocol {
     // MARK: - Variables
 
-    typealias Result = ResultType
+    typealias Result = ResultType?
 
     let messages = [
         0: "Unknown error",
@@ -42,7 +41,6 @@ class Resource<ResultType>: NetworkResourceProtocol {
         3: "Impossible to get data"
     ]
     let result = ReplaySubject<ResultType?>.createUnbounded()
-    fileprivate let bag = DisposeBag()
 
     // MARK: - Constructor
 
@@ -63,13 +61,13 @@ class Resource<ResultType>: NetworkResourceProtocol {
 
     fileprivate func callWebService(with data: ResultType?) {
         guard let request = fetchFromWebService() else {
-            error(DGPError(messages: messages, code: 1))
+            error(IASError(messages: messages, code: 1))
             return
         }
         request.responseJSON { response in
             guard let code = response.response?.statusCode else {
                 guard data != nil else {
-                    self.error(DGPError(messages: self.messages, code: 2))
+                    self.error(IASError(messages: self.messages, code: 2))
                     return
                 }
                 self.completed(data: data)
@@ -88,11 +86,11 @@ class Resource<ResultType>: NetworkResourceProtocol {
                     } else if let x = data {
                         self.completed(data: x)
                     } else {
-                        self.error(DGPError(messages: self.messages, code: 3))
+                        self.error(IASError(messages: self.messages, code: 3))
                     }
                 case 400 ..< 600:
                     self.error(
-                        DGPError(code: response.error?.responseCode)
+                        IASError(code: response.error?.responseCode)
                     )
                     guard let errorMessage = response.error?.errorDescription else { return }
                     Log.print.warning(errorMessage)
@@ -100,7 +98,7 @@ class Resource<ResultType>: NetworkResourceProtocol {
                         Log.print.info(curl)
                 }
                 default:
-                    self.error(DGPError(messages: self.messages, code: 0))
+                    self.error(IASError(messages: self.messages, code: 0))
             }
         }
     }
@@ -128,7 +126,7 @@ class Resource<ResultType>: NetworkResourceProtocol {
         result.onCompleted()
     }
 
-    fileprivate func error(_ error: DGPError) {
+    fileprivate func error(_ error: IASError) {
         result.onError(error)
     }
 }

@@ -12,24 +12,30 @@ class PokemonListRouter: PresenterToRouterPokemonListProtocol {
     // MARK: Variables
     
     static var storyboard: UIStoryboard {
-        let storyboard = StoryboardManager.shared.<# StoryboardManager variable #>
+        let storyboard = StoryboardManager.shared.pokemonList
         return storyboard
     }
     
     // MARK: Navigation functions
     
-    static func navigateToPokemonList(viewController: UIViewController?) {
-        guard let navigator = viewController?.navigationController else { return }
-        guard let scene: UIViewController = createPokemonListScene(parent: viewController) else { return }
-        viewController?.show(scene, sender: navigator)
+    static func navigateToPokemonList(viewController: UIViewController?, pokedexes: [Pokedex], version: Version?) {
+        guard
+            let navigator = viewController?.navigationController,
+            let scene: UIViewController = createPokemonListScene(parent: viewController, pokedexes: pokedexes, version: version)
+        else { return }
+        navigator.show(scene, sender: viewController)
+    }
+    
+    func navigateToPokemonDetails(viewController: UIViewController, pokemon: Pokemon, version: Version?) {
+        PokemonDetailsRouter.navigateToPokemonDetails(viewController: viewController, pokemon: pokemon, version: version)
     }
     
     // MARK: Scene creation functions
     
-    static func createPokemonListScene(parent: UIViewController?) -> UIViewController? {
-        let navigatorIdentifier: String = "PokemonListNavigationController"
-        guard let navigator = storyboard.instantiateViewController(withIdentifier: navigatorIdentifier) as? UINavigationController else { return nil }
-        guard let view = navigator.children.first as? PokemonListViewController else { return nil }
+    static func createPokemonListScene(parent: UIViewController?, pokedexes: [Pokedex], version: Version?) -> UIViewController? {
+        guard
+            let view = storyboard.instantiateInitialViewController() as? PokemonListViewController
+        else { return nil }
         let presenter: ViewToPresenterPokemonListProtocol = PokemonListPresenter()
         let interactor: PresenterToInteractorPokemonListProtocol = PokemonListInteractor()
         let router: PresenterToRouterPokemonListProtocol = PokemonListRouter()
@@ -39,6 +45,8 @@ class PokemonListRouter: PresenterToRouterPokemonListProtocol {
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
+        presenter.pokedexes = pokedexes
+        presenter.version = version
         
         return view
     }

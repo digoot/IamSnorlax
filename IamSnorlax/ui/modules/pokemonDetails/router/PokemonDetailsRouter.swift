@@ -12,24 +12,26 @@ class PokemonDetailsRouter: PresenterToRouterPokemonDetailsProtocol {
     // MARK: Variables
     
     static var storyboard: UIStoryboard {
-        let storyboard = StoryboardManager.shared.<# StoryboardManager variable #>
+        let storyboard = StoryboardManager.shared.pokemonDetails
         return storyboard
     }
     
     // MARK: Navigation functions
     
-    static func navigateToPokemonDetails(viewController: UIViewController?) {
-        guard let navigator = viewController?.navigationController else { return }
-        guard let scene: UIViewController = createPokemonDetailsScene(parent: viewController) else { return }
-        viewController?.show(scene, sender: navigator)
+    static func navigateToPokemonDetails(viewController: UIViewController?, pokemon: Pokemon, version: Version?) {
+        guard
+            let navigator = viewController?.navigationController,
+            let scene: UIViewController = createPokemonDetailsScene(parent: viewController, pokemon: pokemon, version: version)
+        else { return }
+        navigator.show(scene, sender: viewController)
     }
     
     // MARK: Scene creation functions
     
-    static func createPokemonDetailsScene(parent: UIViewController?) -> UIViewController? {
-        let navigatorIdentifier: String = "PokemonDetailsNavigationController"
-        guard let navigator = storyboard.instantiateViewController(withIdentifier: navigatorIdentifier) as? UINavigationController else { return nil }
-        guard let view = navigator.children.first as? PokemonDetailsViewController else { return nil }
+    static func createPokemonDetailsScene(parent: UIViewController?, pokemon: Pokemon, version: Version?) -> UIViewController? {
+        guard
+            let view = storyboard.instantiateInitialViewController() as? PokemonDetailsViewController
+        else { return nil }
         let presenter: ViewToPresenterPokemonDetailsProtocol = PokemonDetailsPresenter()
         let interactor: PresenterToInteractorPokemonDetailsProtocol = PokemonDetailsInteractor()
         let router: PresenterToRouterPokemonDetailsProtocol = PokemonDetailsRouter()
@@ -39,6 +41,8 @@ class PokemonDetailsRouter: PresenterToRouterPokemonDetailsProtocol {
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
+        presenter.pokemon = pokemon
+        presenter.version = version
         
         return view
     }

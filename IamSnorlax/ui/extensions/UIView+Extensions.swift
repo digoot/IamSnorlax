@@ -5,8 +5,7 @@
 //  Created by Diego Otero Mata on 26/10/2020.
 //
 
-import <# Library #>
+import UIKit
 
-extension UIView_Extensions {
-    <# extension functions #>
+extension UIView {
 }

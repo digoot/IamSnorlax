@@ -9,8 +9,9 @@ import Foundation
 import RealmSwift
 
 final class PokemonDao: DaoManager<Pokemon> {
-    func read(id: Int64) -> Pokemon? {
-        let predicate = NSPredicate(format: "id == %@", id)
+    func findPokemonsBy(ids: [Int64]?) -> [Pokemon]? {
+        guard let ids = ids else { return nil }
+        let predicate = NSPredicate(format: "id IN %@", ids)
         return read(predicate)
     }
 }

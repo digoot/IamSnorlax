@@ -9,9 +9,11 @@ import Foundation
 import RxSwift
 
 class VersionListInteractor: PresenterToInteractorVersionListProtocol {
+    func fetchGroupBy(id: Int64) -> ReplaySubject<Group?> {
+        return GroupRepository().fetchGroup(id: id)
+    }
     
-    // MARK: Variables
-    
-    let disposeBag = DisposeBag()
-
+    func fetchVersionBy(id: Int64) -> ReplaySubject<Version?> {
+        return VersionRepository().fetchVersion(id: id)
+    }
 }
