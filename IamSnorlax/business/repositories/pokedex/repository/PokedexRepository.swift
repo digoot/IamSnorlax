@@ -10,32 +10,24 @@ import Foundation
 import RxSwift
 
 final class PokedexRepository {
-    func fetchPokedexBy(id: Int64) -> ReplaySubject<Pokedex?> {
+    func fetchPokedexBy(id: String) -> PublishSubject<Pokedex?> {
         return PokedexResource(id: id).result
     }
 }
 
 final class PokedexResource: Resource<Pokedex> {
-    let pokedexDao: PokedexDao
-    let id: Int64
+    let id: String
     
-    init(id: Int64) {
-        pokedexDao = PokedexDao()
+    init(id: String) {
         self.id = id
         super.init()
-    }
-    
-    override func fetchFromDataBase() -> Pokedex? {
-        return pokedexDao.read(id)
     }
     
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchPokedex(id: id)
     }
     
-    override func saveWebServiceResult(with data: AFDataResponse<Any>) {
-        if let result: PokedexApiObject = PokedexApiObject.deserialize(dataResponse: data) {
-            PokedexAssembler.assemble(result, dao: pokedexDao)
-        }
+    override func convertToObject(with response: AFDataResponse<Any>) -> Pokedex? {
+        return PokedexAssembler.assemble(data: response.data)
     }
 }

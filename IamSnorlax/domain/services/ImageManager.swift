@@ -23,17 +23,7 @@ class ImageManager {
         if let _url = url, let url = URL(string: _url) {
             imageResource = ImageResource(downloadURL: url, cacheKey: cacheKey)
         }
-        component.kf.setImage(with: imageResource, placeholder: placeholder, options: options,
-                              completionHandler: { result in
-                                  switch result {
-                                      case let .success(value):
-                                          Log.print.info(
-                                              "Image retrieved from: " +
-                                                  "\(value.originalSource.url?.absoluteString ?? "Unknown source")")
-                                      case let .failure(error):
-                                          Log.print.warning(error.localizedDescription)
-                                  }
-        })
+        component.kf.setImage(with: imageResource, placeholder: placeholder, options: options)
     }
 
     func setImage(to component: UIButton, with url: String?, placeholder: UIImage?,
@@ -43,17 +33,7 @@ class ImageManager {
             imageResource = ImageResource(downloadURL: url, cacheKey: cacheKey)
         }
         states.forEach { state in
-            component.kf.setImage(with: imageResource, for: state, placeholder: placeholder, options: options,
-                                  completionHandler: { result in
-                                      switch result {
-                                          case let .success(value):
-                                              Log.print.info(
-                                                  "Image retrieved from: " +
-                                                      "\(value.originalSource.url?.absoluteString ?? "Unknown source")")
-                                          case let .failure(error):
-                                              Log.print.warning(error.localizedDescription)
-                                      }
-            })
+            component.kf.setImage(with: imageResource, for: state, placeholder: placeholder, options: options)
         }
     }
 }

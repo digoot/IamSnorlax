@@ -126,7 +126,7 @@ extension GenerationListViewController: UITableViewDataSource {
 extension GenerationListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let generation = dataSource?[indexPath.row] else { return }
-        presenter?.navigateToVersionList(groups: Array(generation.groups))
+        presenter?.navigateToVersionList(generation: generation)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

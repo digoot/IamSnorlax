@@ -18,17 +18,17 @@ class PokemonDetailsRouter: PresenterToRouterPokemonDetailsProtocol {
     
     // MARK: Navigation functions
     
-    static func navigateToPokemonDetails(viewController: UIViewController?, pokemon: Pokemon, version: Version?) {
+    static func navigateToPokemonDetails(viewController: UIViewController?, pokemon: PokemonSpecie) {
         guard
             let navigator = viewController?.navigationController,
-            let scene: UIViewController = createPokemonDetailsScene(parent: viewController, pokemon: pokemon, version: version)
+            let scene: UIViewController = createPokemonDetailsScene(parent: viewController, pokemon: pokemon)
         else { return }
         navigator.show(scene, sender: viewController)
     }
     
     // MARK: Scene creation functions
     
-    static func createPokemonDetailsScene(parent: UIViewController?, pokemon: Pokemon, version: Version?) -> UIViewController? {
+    static func createPokemonDetailsScene(parent: UIViewController?, pokemon: PokemonSpecie) -> UIViewController? {
         guard
             let view = storyboard.instantiateInitialViewController() as? PokemonDetailsViewController
         else { return nil }
@@ -42,7 +42,6 @@ class PokemonDetailsRouter: PresenterToRouterPokemonDetailsProtocol {
         presenter.interactor = interactor
         presenter.router = router
         presenter.pokemon = pokemon
-        presenter.version = version
         
         return view
     }

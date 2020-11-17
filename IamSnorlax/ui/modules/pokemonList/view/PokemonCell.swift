@@ -15,7 +15,7 @@ final class PokemonCell: UITableViewCell {
     var pokemonImage = UIImageView()
     var pokemonNameLabel = UILabel()
     var pokemonNumberLabel = UILabel()
-    var pokemon: Pokemon? {
+    var pokemon: PokemonSpecie? {
         didSet {
             configureCell()
         }
@@ -57,23 +57,23 @@ final class PokemonCell: UITableViewCell {
     }
     
     fileprivate func configureCell() {
-        pokemonImage.setImage(with: pokemon?.sprite, placeholder: UIImage(named: "placeholder"))
+        pokemonImage.setImage(with: pokemon?.sprite?.absoluteString, placeholder: UIImage(named: "placeholder"))
         pokemonImage.contentMode = .scaleAspectFit
         guard let locale = locale else { return }
-        pokemonNameLabel.text = pokemon?.names.filter("locale == %@", locale).first?.value ?? UIConstants.shared.noData
+        pokemonNameLabel.text = pokemon?.names.filter({ $0.language?.name == locale }).first?.name ?? UIConstants.shared.noData
         pokemonNameLabel.font = Font(ofSize: 13).build()
         guard let number = pokemon?.id else { return }
         pokemonNumberLabel.text = "#\(number)"
         pokemonNumberLabel.font = Font(ofSize: 13).build()
     }
     
-    func setupInitialState(pokemon: Pokemon, locale: String?) {
+    func setupInitialState(pokemon: PokemonSpecie, locale: String?) {
         self.locale = locale
         self.pokemon = pokemon
     }
     
     static func buildCell(
-        _ tableView: UITableView, cellForRowAt indexPath: IndexPath, pokemon: Pokemon, locale: String?
+        _ tableView: UITableView, cellForRowAt indexPath: IndexPath, pokemon: PokemonSpecie, locale: String?
     ) -> PokemonCell {
         guard
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? PokemonCell

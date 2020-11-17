@@ -25,11 +25,11 @@ class PokemonListViewController: UIViewController {
         }
     }
     let activityIndicator = UIActivityIndicatorView()
-    var dataSource = [Pokemon]()
-    var dataSourceNames = [PokemonName]()
+    var dataSource = [PokemonSpecie]()
     let disposeBag = DisposeBag()
     let refreshController = UIRefreshControl()
     let locale = UIConstants.shared.locale
+    var disposable: Disposable?
     
     // MARK: Outlets
     
@@ -39,6 +39,10 @@ class PokemonListViewController: UIViewController {
         super.viewDidLoad()
         setupView()
         presenter?.viewIsReady()
+    }
+    
+    deinit {
+        disposable?.disposed(by: disposeBag)
     }
     
     // MARK: Functions
@@ -86,16 +90,16 @@ class PokemonListViewController: UIViewController {
  
 extension PokemonListViewController {
     fileprivate func setupPokemonsBinding() {
-        presenter?.pokemons.subscribe(onNext: { versions in
+        presenter?.pokemons.subscribe(onNext: { pokemons in
             self.stopIndicator()
-            guard let sortedVersions = versions?.sorted(by: { lhs, rhs -> Bool in
-                lhs.order < rhs.order
-            }) else { return }
-            self.dataSource.append(contentsOf: sortedVersions)
+            guard var pokemons = pokemons else { return }
+            pokemons = pokemons.sorted { lhs, rhs -> Bool in
+                lhs.id < rhs.id
+            }
+            self.dataSource.append(contentsOf: pokemons)
             self.pokemonTable?.reloadData()
-        }, onCompleted: {
-            self.presenter?.pokemons = ReplaySubject.createUnbounded()
-            self.setupPokemonsBinding()
+        }, onError: { _ in
+            
         }).disposed(by: disposeBag)
     }
 }
@@ -113,8 +117,10 @@ extension PokemonListViewController: UITableViewDataSourcePrefetching {
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         if indexPaths.contains(where: isLoadingCell) {
             guard let lastRow = indexPaths.last?.row else { return }
-            let page = (lastRow / (UIConstants.shared.pokemonsPerPage - 1)) + 1
+            let page = Int(round(Double(lastRow / (UIConstants.shared.pokemonsPerPage - 1)))) + 1
             DispatchQueue.main.async {
+                self.presenter?.pokemons = PublishSubject()
+                self.setupPokemonsBinding()
                 self.presenter?.loadPokemons(page: page)
             }
         }

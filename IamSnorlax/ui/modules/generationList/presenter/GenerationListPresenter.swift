@@ -13,31 +13,42 @@ class GenerationListPresenter: ViewToPresenterGenerationListProtocol {
     var view: PresenterToViewGenerationListProtocol?
     var interactor: PresenterToInteractorGenerationListProtocol?
     var router: PresenterToRouterGenerationListProtocol?
-    var generations: PublishSubject<[Generation]?> = PublishSubject()
+    var generations: PublishSubject<[Generation]?>
 
     let disposeBag = DisposeBag()
+    
+    init() {
+        generations = PublishSubject()
+    }
 
     // MARK: - Functions
 
     func viewIsReady() {
-        loadGenerations()
+        loadGenerationsIds()
     }
 
     // MARK: - Data fetching
 
-    fileprivate func loadGenerations() {
-        interactor?.fetchGenerations().bind(to: generations).disposed(by: disposeBag)
-        createSubject()
+    fileprivate func loadGenerationsIds() {
+        interactor?.fetchGenerations().subscribe(onNext: { ids in
+            guard let ids = ids else {
+                self.generations.onError(IASError(title: "Error fetching ids", messages: nil, code: nil))
+                return
+            }
+            self.loadGenerationsWith(ids: ids)
+        }, onError: { _ in
+            
+        }).disposed(by: disposeBag)
     }
     
-    fileprivate func createSubject() {
-        generations = PublishSubject()
+    fileprivate func loadGenerationsWith(ids: [String]) {
+        interactor?.fetchGenerationsWith(ids: ids).bind(to: generations).disposed(by: disposeBag)
     }
     
     // MARK: - Navigations
     
-    func navigateToVersionList(groups: [Group]) {
+    func navigateToVersionList(generation: Generation) {
         guard let vc = view as? GenerationListViewController else { return }
-        router?.navigateToVersionList(viewController: vc, groups: groups)
+        router?.navigateToVersionList(viewController: vc, generation: generation)
     }
 }

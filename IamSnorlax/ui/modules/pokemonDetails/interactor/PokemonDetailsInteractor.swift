@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 class PokemonDetailsInteractor: PresenterToInteractorPokemonDetailsProtocol {
-    func fetchPokemonDetailsBy(id: Int64) -> ReplaySubject<Pokemon?> {
+    func fetchPokemonDetailsBy(id: String) -> PublishSubject<Pokemon?> {
         return PokemonRepository().fetchPokemonDetailsBy(id: id)
     }
 }

@@ -6,30 +6,26 @@
 //
 
 import Foundation
-import RealmSwift
 
-final class Pokemon: Object {
-    @objc dynamic var id: Int64 = 0
-    var names = List<PokemonName>()
-    @objc dynamic var wording: String? = nil
-    var stats = List<PokemonStat>()
-    let pokedexes = LinkingObjects(fromType: Pokedex.self, property: "pokemons")
-    @objc dynamic var height = 0
-    @objc dynamic var weight = 0
-    @objc dynamic var baseExperience = 0
-    @objc dynamic var baby = false
-    @objc dynamic var legendary = false
-    @objc dynamic var mythical = false
-    @objc dynamic var order = 0
-    @objc dynamic var sprite: String? = nil
-    @objc dynamic var image: String? = nil
+struct Pokemon: Codable {
+    var id: Int
+    var name: String?
+    var baseExperience: Int?
+    var height: Int?
+    var weight: Int?
+    var order: Int
+    var stats: [PokemonStat]?
+    var sprites: Sprites?
     
-    override static func primaryKey() -> String? {
-        return "id"
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case baseExperience = "base_experience"
+        case height
+        case weight
+        case order
+        case stats
+        case sprites
     }
     
-    convenience init(id: Int64) {
-        self.init()
-        self.id = id
-    }
 }

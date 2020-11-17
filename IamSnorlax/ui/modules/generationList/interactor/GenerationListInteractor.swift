@@ -9,25 +9,27 @@ import RxSwift
 
 class GenerationListInteractor: PresenterToInteractorGenerationListProtocol {
     var disposeBag = DisposeBag()
-    func fetchGenerations() -> PublishSubject<[Generation]?> {
-        let subject = PublishSubject<[Generation]?>()
+    
+    func fetchGenerations() -> PublishSubject<[String]?> {
+        return GenerationRepository().fetchGenerations()
+    }
+    
+    func fetchGenerationsWith(ids: [String]) -> PublishSubject<[Generation]?> {
         let repository = GenerationRepository()
-        repository.fetchGenerations().subscribe(onNext: { ids in
-            guard let ids = ids else {
-                return subject.onError(IASError.init(title: "No", messages: nil, code: nil))
-            }
-            var generations = [Generation]()
-            ids.forEach{ id in
-                repository.fetchGenerationWith(id: id).subscribe(onNext: { generation in
-                    guard let generation = generation else { return }
-                    generations.append(generation)
-                    if generations.count == ids.count {
-                        subject.onNext(generations)
-                        subject.onCompleted()
-                    }
-                }).disposed(by: self.disposeBag)
-            }
-        }).disposed(by: disposeBag)
+        let subject = PublishSubject<[Generation]?>()
+        var generations = [Generation]()
+        ids.forEach{ id in
+            repository.fetchGenerationWith(id: id).subscribe(onNext: { generation in
+                guard let generation = generation else { return }
+                generations.append(generation)
+                if generations.count == ids.count {
+                    subject.onNext(generations)
+                    subject.onCompleted()
+                }
+            }, onError: { error in
+                subject.onError(error)
+            }).disposed(by: self.disposeBag)
+        }
         return subject
     }
 }

@@ -6,19 +6,15 @@
 //
 
 import Foundation
-import RealmSwift
 
-final class Version: Object {
-    @objc dynamic var id: Int64 = 0
-    var names = List<VersionName>()
-    @objc dynamic var group: Group? = nil
+struct Version: Codable {
+    var id: Int
+    var names: [Name]
+    var group: DataSet
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    convenience init(id: Int64) {
-        self.init()
-        self.id = id
+    enum CodingKeys: String, CodingKey {
+        case id
+        case names
+        case group = "version_group"
     }
 }

@@ -10,50 +10,37 @@ import Foundation
 import RxSwift
 
 final class GenerationRepository {
-    func fetchGenerations() -> ReplaySubject<[Int64]?> {
+    func fetchGenerations() -> PublishSubject<[String]?> {
         return GenerationListResource().result
     }
-    func fetchGenerationWith(id: Int64) -> ReplaySubject<Generation?> {
+    func fetchGenerationWith(id: String) -> PublishSubject<Generation?> {
         return GenerationResource(id: id).result
     }
 }
 
-final class GenerationListResource: Resource<[Int64]> {
-    override func fetchFrom() -> ReadType {
-        return .onlyWebService
-    }
-
+final class GenerationListResource: Resource<[String]> {
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchGenerations()
     }
 
-    override func convertToObject(with data: AFDataResponse<Any>) -> [Int64]? {
-        guard let result: ListApiObject = ListApiObject.deserialize(dataResponse: data) else { return nil }
-        return GenerationAssembler.assemble(list: result)
+    override func convertToObject(with response: AFDataResponse<Any>) -> [String]? {
+        return GenerationAssembler.assemble(data: response.data)
     }
 }
 
 final class GenerationResource: Resource<Generation> {
-    let generationDao: GenerationDao
-    let id: Int64
+    let id: String
     
-    init(id: Int64) {
-        generationDao = GenerationDao()
+    init(id: String) {
         self.id = id
         super.init()
-    }
-    
-    override func fetchFromDataBase() -> Generation? {
-        return generationDao.read(id)
     }
     
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchGeneration(id: id)
     }
     
-    override func saveWebServiceResult(with data: AFDataResponse<Any>) {
-        if let result: GenerationApiObject = GenerationApiObject.deserialize(dataResponse: data) {
-            GenerationAssembler.assemble(result, dao: generationDao)
-        }
+    override func convertToObject(with response: AFDataResponse<Any>) -> Generation? {
+        return GenerationAssembler.assemble(data: response.data)
     }
 }

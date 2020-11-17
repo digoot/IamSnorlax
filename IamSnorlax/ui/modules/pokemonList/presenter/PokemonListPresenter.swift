@@ -13,10 +13,10 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
     var view: PresenterToViewPokemonListProtocol?
     var interactor: PresenterToInteractorPokemonListProtocol?
     var router: PresenterToRouterPokemonListProtocol?
-    var pokedexes: [Pokedex]?
+    var pokedexSets: [DataSet]?
     var version: Version?
-    var pokemons = ReplaySubject<[Pokemon]?>.createUnbounded()
-    var pokemonsNames = ReplaySubject<[PokemonName]?>.createUnbounded()
+    var pokedexes = [Pokedex]()
+    var pokemons = PublishSubject<[PokemonSpecie]?>()
     var fetchedPokemons = [Pokemon]()
 
     let disposeBag = DisposeBag()
@@ -30,15 +30,15 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
     // MARK: Data fetching
 
     fileprivate func loadPokedexes() {
-        guard let pokedexes = pokedexes else { return }
-        let idsPokedexes = pokedexes.compactMap { $0.id }
+        guard let pokedexSets = pokedexSets else { return }
+        let idsPokedexes = pokedexSets.compactMap({ $0.url.lastPathComponent })
         var fetchedPokedexes = [Pokedex]()
         idsPokedexes.forEach { id in
             interactor?.fetchPokedexBy(id: id).subscribe(onNext: { pokedex in
                 if let pokedex = pokedex {
                     fetchedPokedexes.append(pokedex)
                 }
-                if pokedexes.count == fetchedPokedexes.count {
+                if pokedexSets.count == fetchedPokedexes.count {
                     self.pokedexes = fetchedPokedexes
                     self.loadPokemons(page: 1)
                 }
@@ -47,15 +47,13 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
     }
 
     func loadPokemons(page: Int) {
-        guard
-            page > 0,
-            let pokedexes = pokedexes
-        else { return }
+        guard page > 0 else { return }
         let pokemonsPerPage = UIConstants.shared.pokemonsPerPage
         let min = pokemonsPerPage * (page - 1)
         var max = pokemonsPerPage * page - 1
-        var fetchedPokemons = [Pokemon]()
-        var idPokemons = Array(pokedexes.compactMap { $0.pokemons.compactMap { $0.id } }.joined()).unique()
+        var fetchedPokemons = [PokemonSpecie]()
+        var idPokemons = Array(pokedexes.compactMap({ $0.pokemonEntries.compactMap({ $0.entryNumber }) }).joined())
+        idPokemons = idPokemons.unique()
         idPokemons = idPokemons.sorted(by: { lhs, rhs -> Bool in
             lhs < rhs
         })
@@ -64,7 +62,7 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
             max = idPokemons.count - 1
         }
         for index in min ... max {
-            interactor?.fetchPokemonBy(id: idPokemons[index], version: version).subscribe(onNext: { pokemon in
+            interactor?.fetchPokemonBy(id: String(idPokemons[index])).subscribe(onNext: { pokemon in
                 if let pokemon = pokemon {
                     fetchedPokemons.append(pokemon)
                 }
@@ -78,8 +76,8 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
     
     // MARK: - Navigations
     
-    func navigateToPokemonDetails(pokemon: Pokemon) {
+    func navigateToPokemonDetails(pokemon: PokemonSpecie) {
         guard let vc = view as? PokemonListViewController else { return }
-        router?.navigateToPokemonDetails(viewController: vc, pokemon: pokemon, version: version)
+        router?.navigateToPokemonDetails(viewController: vc, pokemon: pokemon)
     }
 }

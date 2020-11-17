@@ -10,32 +10,24 @@ import Foundation
 import RxSwift
 
 final class GroupRepository {
-    func fetchGroup(id: Int64) -> ReplaySubject<Group?> {
+    func fetchGroup(id: String) -> PublishSubject<Group?> {
         return GroupResource(id: id).result
     }
 }
 
 final class GroupResource: Resource<Group> {
-    let groupDao: GroupDao
-    let id: Int64
+    let id: String
     
-    init(id: Int64) {
-        groupDao = GroupDao()
+    init(id: String) {
         self.id = id
         super.init()
-    }
-    
-    override func fetchFromDataBase() -> Group? {
-        return groupDao.read(id)
     }
     
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchGroup(id: id)
     }
     
-    override func saveWebServiceResult(with data: AFDataResponse<Any>) {
-        if let result: GroupApiObject = GroupApiObject.deserialize(dataResponse: data) {
-            GroupAssembler.assemble(result, dao: groupDao)
-        }
+    override func convertToObject(with response: AFDataResponse<Any>) -> Group? {
+        return GroupAssembler.assemble(data: response.data)
     }
 }

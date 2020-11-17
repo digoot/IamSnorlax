@@ -8,14 +8,14 @@
 import RxSwift
 
 class VersionListPresenter: ViewToPresenterVersionListProtocol {
-    
     // MARK: Variables
     
     var view: PresenterToViewVersionListProtocol?
     var interactor: PresenterToInteractorVersionListProtocol?
     var router: PresenterToRouterVersionListProtocol?
-    var groups: [Group]?
-    var versions = ReplaySubject<[Version]?>.createUnbounded()
+    var generation: Generation?
+    var versions = PublishSubject<[Version]?>()
+    var groups = [Group]()
     
     let disposeBag = DisposeBag()
     
@@ -28,16 +28,15 @@ class VersionListPresenter: ViewToPresenterVersionListProtocol {
     // MARK: Data fetching
     
     fileprivate func loadGroups() {
-        guard let groups = groups else { return }
-        let idsGroups = groups.compactMap{ $0.id }
+        let idsGroups = generation?.versionGroups?.compactMap({ $0.url.lastPathComponent })
         var fetchedGroups = [Group]()
-        idsGroups.forEach({ id in
+        idsGroups?.forEach({ id in
             interactor?.fetchGroupBy(id: id).subscribe(onNext: { group in
                 if let group = group {
                     fetchedGroups.append(group)
                 }
-                if groups.count == fetchedGroups.count {
-                    self.groups = fetchedGroups
+                if idsGroups?.count == fetchedGroups.count {
+                    self.groups.append(contentsOf: fetchedGroups)
                     self.loadVersions()
                 }
             }).disposed(by: disposeBag)
@@ -45,8 +44,7 @@ class VersionListPresenter: ViewToPresenterVersionListProtocol {
     }
     
     fileprivate func loadVersions() {
-        guard let groups = groups else { return }
-        let idVersions = Array(groups.compactMap({ $0.versions.compactMap{ $0.id } }).joined())
+        let idVersions = Array(groups.compactMap{ $0.versions.compactMap{ $0.url.lastPathComponent } }.joined())
         var fetchedVersions = [Version]()
         idVersions.forEach({ id in
             interactor?.fetchVersionBy(id: id).subscribe(onNext: { version in
@@ -63,8 +61,11 @@ class VersionListPresenter: ViewToPresenterVersionListProtocol {
     
     // MARK: - Navigations
     
-    func navigateToPokemonList(pokedexes: [Pokedex], version: Version?) {
-        guard let vc = view as? VersionListViewController else { return }
+    func navigateToPokemonList(version: Version) {
+        guard
+            let vc = view as? VersionListViewController,
+            let pokedexes = groups.filter({ $0.name == version.group.name }).first?.pokedexes
+        else { return }
         router?.navigateToPokemonList(viewController: vc, pokedexes: pokedexes, version: version)
     }
 }

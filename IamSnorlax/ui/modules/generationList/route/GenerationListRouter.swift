@@ -23,8 +23,8 @@ class GenerationListRouter: PresenterToRouterGenerationListProtocol {
         viewController?.show(scene, sender: viewController)
     }
     
-    func navigateToVersionList(viewController: UIViewController, groups: [Group]) {
-        VersionListRouter.navigateToVersionList(viewController: viewController, groups: groups)
+    func navigateToVersionList(viewController: UIViewController, generation: Generation) {
+        VersionListRouter.navigateToVersionList(viewController: viewController, generation: generation)
     }
     
     // MARK: Scene creation functions

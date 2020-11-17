@@ -6,22 +6,15 @@
 //
 
 import Foundation
-import RealmSwift
 
-final class PokemonStat: Object {
-    @objc dynamic var id = ""
-    @objc dynamic var statId: Int64 = 0
-    @objc dynamic var name: String? = nil
-    @objc dynamic var effort = 0
-    @objc dynamic var base = 0
+struct PokemonStat: Codable {
+    var baseStat: Int?
+    var effort: Int?
+    var stat: DataSet?
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    convenience init(id: String, statId: Int64) {
-        self.init()
-        self.id = id
-        self.statId = statId
+    enum CodingKeys: String, CodingKey {
+        case baseStat = "base_stat"
+        case effort
+        case stat
     }
 }

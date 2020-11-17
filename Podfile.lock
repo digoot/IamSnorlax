@@ -8,7 +8,6 @@ PODS:
     - Kingfisher/Core (= 5.14.1)
   - Kingfisher/Core (5.14.1)
   - Nimble (8.1.1)
-  - ObjectMapper (4.2.0)
   - OHHTTPStubs/Core (9.0.0)
   - OHHTTPStubs/Default (9.0.0):
     - OHHTTPStubs/Core
@@ -23,11 +22,6 @@ PODS:
   - OHHTTPStubs/Swift (9.0.0):
     - OHHTTPStubs/Default
   - Quick (3.0.0)
-  - Realm (5.3.3):
-    - Realm/Headers (= 5.3.3)
-  - Realm/Headers (5.3.3)
-  - RealmSwift (5.3.3):
-    - Realm (= 5.3.3)
   - RxBlocking (5.1.1):
     - RxSwift (~> 5)
   - RxCocoa (5.1.1):
@@ -51,10 +45,8 @@ DEPENDENCIES:
   - Cuckoo
   - Kingfisher
   - Nimble
-  - ObjectMapper
   - OHHTTPStubs/Swift
   - Quick
-  - RealmSwift
   - RxBlocking
   - RxCocoa
   - RxDataSources
@@ -71,11 +63,8 @@ SPEC REPOS:
     - Differentiator
     - Kingfisher
     - Nimble
-    - ObjectMapper
     - OHHTTPStubs
     - Quick
-    - Realm
-    - RealmSwift
     - RxBlocking
     - RxCocoa
     - RxDataSources
@@ -92,11 +81,8 @@ SPEC CHECKSUMS:
   Differentiator: 886080237d9f87f322641dedbc5be257061b0602
   Kingfisher: 8050bc6f7f68cbf3908bd04df7ccbac188f6d6d6
   Nimble: 5f8a2fb6fa343a7242dfdd9d42f7267419d464b2
-  ObjectMapper: 1eb41f610210777375fa806bf161dc39fb832b81
   OHHTTPStubs: cb29d2a9d09a828ecb93349a2b0c64f99e0db89f
   Quick: 6d9559f40647bc4d510103842ef2fdd882d753e2
-  Realm: 2d57ea355bf8ca2a0964d6bfb38d28d7ff2addf6
-  RealmSwift: 0a709536ecea30eea1d3c514f6ade2ed078dee3c
   RxBlocking: 5f700a78cad61ce253ebd37c9a39b5ccc76477b4
   RxCocoa: 32065309a38d29b5b0db858819b5bf9ef038b601
   RxDataSources: efee07fa4de48477eca0a4611e6d11e2da9c1114
@@ -107,6 +93,6 @@ SPEC CHECKSUMS:
   SwiftLint: 4154893c73a4c52d6240195507eb7a3e3c64087e
   SwiftyBeaver: a1f5691458561414bcfab51874b2b7445451602b
 
-PODFILE CHECKSUM: 896053c87b3a7498e6eb4663c30c210b9d6b6209
+PODFILE CHECKSUM: a4b0ef41315c691e78f06b653b5faead5c234fc8
 
 COCOAPODS: 1.9.3

@@ -26,8 +26,8 @@ final class Api: ApiRestManager {
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
-    func fetchGeneration(id: Int64) -> DataRequest? {
-        let service = Endpoint.generations.build(String(id))
+    func fetchGeneration(id: String) -> DataRequest? {
+        let service = Endpoint.generations.build(id)
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
@@ -41,8 +41,8 @@ final class Api: ApiRestManager {
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
-    func fetchGroup(id: Int64) -> DataRequest? {
-        let service = Endpoint.versionGroup.build(String(id))
+    func fetchGroup(id: String) -> DataRequest? {
+        let service = Endpoint.versionGroup.build(id)
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
@@ -56,8 +56,8 @@ final class Api: ApiRestManager {
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
-    func fetchVersion(id: Int64) -> DataRequest? {
-        let service = Endpoint.version.build(String(id))
+    func fetchVersion(id: String) -> DataRequest? {
+        let service = Endpoint.version.build(id)
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
@@ -71,8 +71,8 @@ final class Api: ApiRestManager {
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
-    func fetchPokedex(id: Int64) -> DataRequest? {
-        let service = Endpoint.pokedex.build(String(id))
+    func fetchPokedex(id: String) -> DataRequest? {
+        let service = Endpoint.pokedex.build(id)
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
@@ -86,13 +86,13 @@ final class Api: ApiRestManager {
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
-    func fetchPokemon(id: Int64) -> DataRequest? {
-        let service = Endpoint.pokemonSpecies.build(String(id))
+    func fetchPokemon(id: String) -> DataRequest? {
+        let service = Endpoint.pokemonSpecies.build(id)
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     
-    func fetchPokemonDetails(id: Int64) -> DataRequest? {
-        let service = Endpoint.pokemon.build(String(id))
+    func fetchPokemonDetails(id: String) -> DataRequest? {
+        let service = Endpoint.pokemon.build(id)
         return get(service: service, parameters: nil, headers: nil, requestModifier: nil)
     }
     

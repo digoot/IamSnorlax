@@ -16,10 +16,6 @@ target 'IamSnorlax' do
 
   # Network libraries
   pod 'Alamofire'
-  pod 'ObjectMapper'
-
-  # Persistence libraries
-  pod 'RealmSwift'
 
   # Reactive libraries
   pod 'RxSwift'

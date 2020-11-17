@@ -123,11 +123,8 @@ extension VersionListViewController: UITableViewDataSource {
 
 extension VersionListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard
-            let version = dataSource?[indexPath.row],
-            let group = version.group
-        else { return }
-        presenter?.navigateToPokemonList(pokedexes: Array(group.pokedexes), version: version)
+        guard let version = dataSource?[indexPath.row] else { return }
+        presenter?.navigateToPokemonList(version: version)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }

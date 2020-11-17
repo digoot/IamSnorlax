@@ -18,7 +18,7 @@ class PokemonListRouter: PresenterToRouterPokemonListProtocol {
     
     // MARK: Navigation functions
     
-    static func navigateToPokemonList(viewController: UIViewController?, pokedexes: [Pokedex], version: Version?) {
+    static func navigateToPokemonList(viewController: UIViewController?, pokedexes: [DataSet], version: Version) {
         guard
             let navigator = viewController?.navigationController,
             let scene: UIViewController = createPokemonListScene(parent: viewController, pokedexes: pokedexes, version: version)
@@ -26,13 +26,13 @@ class PokemonListRouter: PresenterToRouterPokemonListProtocol {
         navigator.show(scene, sender: viewController)
     }
     
-    func navigateToPokemonDetails(viewController: UIViewController, pokemon: Pokemon, version: Version?) {
-        PokemonDetailsRouter.navigateToPokemonDetails(viewController: viewController, pokemon: pokemon, version: version)
+    func navigateToPokemonDetails(viewController: UIViewController, pokemon: PokemonSpecie) {
+        PokemonDetailsRouter.navigateToPokemonDetails(viewController: viewController, pokemon: pokemon)
     }
     
     // MARK: Scene creation functions
     
-    static func createPokemonListScene(parent: UIViewController?, pokedexes: [Pokedex], version: Version?) -> UIViewController? {
+    static func createPokemonListScene(parent: UIViewController?, pokedexes: [DataSet], version: Version) -> UIViewController? {
         guard
             let view = storyboard.instantiateInitialViewController() as? PokemonListViewController
         else { return nil }
@@ -45,7 +45,7 @@ class PokemonListRouter: PresenterToRouterPokemonListProtocol {
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
-        presenter.pokedexes = pokedexes
+        presenter.pokedexSets = pokedexes
         presenter.version = version
         
         return view

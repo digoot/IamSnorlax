@@ -6,21 +6,19 @@
 //
 
 import Foundation
-import RealmSwift
 
-final class Pokedex: Object {
-    @objc dynamic var id: Int64 = 0
-    var names = List<PokedexName>()
-    var descriptions = List<PokedexDescription>()
-    var pokemons = List<Pokemon>()
-    let groups = LinkingObjects(fromType: Group.self, property: "pokedexes")
+struct Pokedex: Codable {
+    var id: Int
+    var names: [Name]
+    var versionGroups: [DataSet]
+    var descriptions: [Description]
+    var pokemonEntries: [PokemonEntry]
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    convenience init(id: Int64) {
-        self.init()
-        self.id = id
+    enum CodingKeys: String, CodingKey {
+        case id
+        case names
+        case versionGroups = "version_groups"
+        case descriptions
+        case pokemonEntries = "pokemon_entries"
     }
 }

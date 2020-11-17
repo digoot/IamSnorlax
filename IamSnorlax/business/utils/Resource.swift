@@ -40,7 +40,7 @@ class Resource<ResultType>: NetworkResourceProtocol {
         2: "There's no status code",
         3: "Impossible to get data"
     ]
-    let result = ReplaySubject<ResultType?>.createUnbounded()
+    let result = PublishSubject<ResultType?>()
 
     // MARK: - Constructor
 
@@ -104,7 +104,7 @@ class Resource<ResultType>: NetworkResourceProtocol {
     }
 
     func fetchFrom() -> ReadType {
-        return .all
+        return .onlyWebService
     }
 
     func fetchFromDataBase() -> ResultType? {
@@ -115,9 +115,9 @@ class Resource<ResultType>: NetworkResourceProtocol {
         return nil
     }
 
-    func saveWebServiceResult(with data: AFDataResponse<Any>) {}
+    func saveWebServiceResult(with response: AFDataResponse<Any>) {}
 
-    func convertToObject(with data: AFDataResponse<Any>) -> ResultType? {
+    func convertToObject(with response: AFDataResponse<Any>) -> ResultType? {
         return nil
     }
 

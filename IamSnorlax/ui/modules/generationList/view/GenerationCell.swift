@@ -27,13 +27,11 @@ final class GenerationCell: UITableViewCell {
     // MARK: - Functions
     
     fileprivate func setupView() {
-        isSkeletonable = true
         contentView.addSubview(name)
         backgroundColor = UIConstants.shared.backgroundColor
         let backgroundView = UIView()
         backgroundView.backgroundColor = UIColor(named: "secondary")
         selectedBackgroundView = backgroundView
-        name.isSkeletonable = true
     }
     
     fileprivate func setupConstraints() {
@@ -45,7 +43,7 @@ final class GenerationCell: UITableViewCell {
     
     fileprivate func configureCell() {
         guard let locale = locale else { return }
-        name.text = generation?.names.filter("locale == %@", locale).first?.value ?? UIConstants.shared.noData
+        name.text = generation?.names?.filter({ $0.language?.name == locale }).first?.name ?? UIConstants.shared.noData
         name.font = Font(ofSize: 13).build()
     }
     

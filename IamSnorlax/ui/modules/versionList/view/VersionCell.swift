@@ -27,7 +27,6 @@ final class VersionCell: UITableViewCell {
     // MARK: - Functions
     
     fileprivate func setupView() {
-        name.isSkeletonable = true
         contentView.addSubview(name)
         backgroundColor = UIConstants.shared.backgroundColor
         let backgroundView = UIView()
@@ -44,7 +43,7 @@ final class VersionCell: UITableViewCell {
     
     fileprivate func configureCell() {
         guard let locale = locale else { return }
-        name.text = version?.names.filter("locale == %@", locale).first?.value ?? UIConstants.shared.noData
+        name.text = version?.names.filter({ $0.language?.name == locale }).first?.name ?? UIConstants.shared.noData
         name.font = Font(ofSize: 13).build()
     }
     

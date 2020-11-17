@@ -6,20 +6,17 @@
 //
 
 import Foundation
-import RealmSwift
 
-final class Group: Object {
-    @objc dynamic var id: Int64 = 0
-    @objc dynamic var name: String? = nil
-    var pokedexes = List<Pokedex>()
-    var versions = List<Version>()
+struct Group: Codable {
+    var id: Int
+    var name: String
+    var pokedexes: [DataSet]
+    var versions: [DataSet]
     
-    override static func primaryKey() -> String? {
-        return "id"
-    }
-    
-    convenience init(id: Int64) {
-        self.init()
-        self.id = id
+    enum CodingKeys: String, CodingKey {
+        case id
+        case name
+        case pokedexes
+        case versions
     }
 }

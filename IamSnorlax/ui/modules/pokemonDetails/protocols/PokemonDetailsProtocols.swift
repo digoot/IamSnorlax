@@ -15,7 +15,7 @@ protocol PresenterToViewPokemonDetailsProtocol: class {
 }
 
 protocol PresenterToInteractorPokemonDetailsProtocol: class {
-    func fetchPokemonDetailsBy(id: Int64) -> ReplaySubject<Pokemon?>
+    func fetchPokemonDetailsBy(id: String) -> PublishSubject<Pokemon?>
 }
 
 protocol PresenterToRouterPokemonDetailsProtocol: class {}
@@ -26,8 +26,7 @@ protocol ViewToPresenterPokemonDetailsProtocol: class {
     var router: PresenterToRouterPokemonDetailsProtocol? { get set }
     var interactor: PresenterToInteractorPokemonDetailsProtocol? { get set }
     var view: PresenterToViewPokemonDetailsProtocol? { get set }
-    var pokemon: Pokemon? { get set }
-    var version: Version? { get set }
-    var fetchedInfo: ReplaySubject<Pokemon?> { get set }
+    var pokemon: PokemonSpecie? { get set }
+    var fetchedInfo: PublishSubject<Pokemon?> { get set }
     func viewIsReady()
 }

@@ -10,86 +10,44 @@ import Foundation
 import RxSwift
 
 final class PokemonRepository {
-    func fetchPokemonBy(id: Int64, version: Version?) -> ReplaySubject<Pokemon?> {
-        return PokemonSpecieResource(id: id, version: version).result
+    func fetchPokemonBy(id: String) -> PublishSubject<PokemonSpecie?> {
+        return PokemonSpecieResource(id: id).result
     }
-    func fetchPokemonDetailsBy(id: Int64) -> ReplaySubject<Pokemon?> {
+    func fetchPokemonDetailsBy(id: String) -> PublishSubject<Pokemon?> {
         return PokemonDetailsResource(id: id).result
-    }
-    func fetchPokemonNamesBy(ids: [Int64], locale: String) -> ReplaySubject<[PokemonName]?> {
-        return PokemonNamesResource(ids: ids, locale: locale).result
     }
 }
 
-final class PokemonSpecieResource: Resource<Pokemon> {
-    let pokemonDao: PokemonDao
-    let id: Int64
-    let version: Version?
+final class PokemonSpecieResource: Resource<PokemonSpecie> {
+    let id: String
     
-    init(id: Int64, version: Version?) {
-        pokemonDao = PokemonDao()
+    init(id: String) {
         self.id = id
-        self.version = version
         super.init()
-    }
-    
-    override func fetchFromDataBase() -> Pokemon? {
-        return pokemonDao.read(id)
     }
     
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchPokemon(id: id)
     }
     
-    override func saveWebServiceResult(with data: AFDataResponse<Any>) {
-        if let result: PokemonSpecieApiObject = PokemonSpecieApiObject.deserialize(dataResponse: data) {
-            PokemonAssembler.assemble(result, dao: pokemonDao)
-        }
-    }
-}
-
-final class PokemonNamesResource: Resource<[PokemonName]> {
-    let pokemonNameDao: PokemonNameDao
-    let ids: [Int64]
-    let locale: String
-    
-    init(ids: [Int64], locale: String) {
-        pokemonNameDao = PokemonNameDao()
-        self.ids = ids
-        self.locale = locale
-        super.init()
-    }
-    
-    override func fetchFrom() -> ReadType {
-        return .onlyDataBase
-    }
-    
-    override func fetchFromDataBase() -> [PokemonName]? {
-        return pokemonNameDao.fetchNamesByPokemon(ids: ids, locale: locale)
+    override func convertToObject(with response: AFDataResponse<Any>) -> PokemonSpecie? {
+        return PokemonAssembler.assemble(data: response.data)
     }
 }
 
 final class PokemonDetailsResource: Resource<Pokemon> {
-    let pokemonDao: PokemonDao
-    let id: Int64
+    let id: String
     
-    init(id: Int64) {
-        pokemonDao = PokemonDao()
+    init(id: String) {
         self.id = id
         super.init()
-    }
-    
-    override func fetchFromDataBase() -> Pokemon? {
-        return pokemonDao.read(id)
     }
     
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchPokemonDetails(id: id)
     }
     
-    override func saveWebServiceResult(with data: AFDataResponse<Any>) {
-        if let result: PokemonApiObject = PokemonApiObject.deserialize(dataResponse: data) {
-            PokemonAssembler.assemble(result, dao: pokemonDao)
-        }
+    override func convertToObject(with response: AFDataResponse<Any>) -> Pokemon? {
+        return PokemonAssembler.assemble(data: response.data)
     }
 }

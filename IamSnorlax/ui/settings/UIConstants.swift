@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SkeletonView
 import UIKit
 
 struct Font {

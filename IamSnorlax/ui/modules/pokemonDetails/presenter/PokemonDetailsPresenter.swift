@@ -13,9 +13,8 @@ class PokemonDetailsPresenter: ViewToPresenterPokemonDetailsProtocol {
     var view: PresenterToViewPokemonDetailsProtocol?
     var interactor: PresenterToInteractorPokemonDetailsProtocol?
     var router: PresenterToRouterPokemonDetailsProtocol?
-    var pokemon: Pokemon?
-    var version: Version?
-    var fetchedInfo = ReplaySubject<Pokemon?>.createUnbounded()
+    var pokemon: PokemonSpecie?
+    var fetchedInfo = PublishSubject<Pokemon?>()
     let disposeBag = DisposeBag()
     
     // MARK: Functions
@@ -28,7 +27,7 @@ class PokemonDetailsPresenter: ViewToPresenterPokemonDetailsProtocol {
     
     fileprivate func loadPokemonData() {
         guard let id = pokemon?.id else { return }
-        interactor?.fetchPokemonDetailsBy(id: id).bind(to: fetchedInfo).disposed(by: disposeBag)
+        interactor?.fetchPokemonDetailsBy(id: String(id)).bind(to: fetchedInfo).disposed(by: disposeBag)
     }
     
 }
