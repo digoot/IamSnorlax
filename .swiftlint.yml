@@ -26,6 +26,7 @@ whitelist_rules:
 excluded:
   - Carthage
   - Pods
+  - IamSnorlaxTests
 
 colon:
   apply_to_dictionaries: false

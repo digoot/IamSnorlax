@@ -37,7 +37,7 @@ class GenerationListPresenter: ViewToPresenterGenerationListProtocol {
             }
             self.loadGenerationsWith(ids: ids)
         }, onError: { _ in
-            
+            Log.print.error("Error")
         }).disposed(by: disposeBag)
     }
     

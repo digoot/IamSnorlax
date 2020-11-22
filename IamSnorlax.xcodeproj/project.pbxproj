@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		1A8D4206ABC3A077E1A48F41 /* Pods_IamSnorlax.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D3C38B3ADA43AAD3A0A15D /* Pods_IamSnorlax.framework */; };
 		BFC3AC572B6144E267FAB349 /* Pods_IamSnorlax_IamSnorlaxUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDB07A4C7C8EC42A79B1D888 /* Pods_IamSnorlax_IamSnorlaxUITests.framework */; };
+		F10EDE73256A66430052D562 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE72256A66430052D562 /* main.swift */; };
+		F10EDE78256A67120052D562 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE77256A67120052D562 /* TestingAppDelegate.swift */; };
+		F10EDE83256A67380052D562 /* TestingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE82256A67380052D562 /* TestingSceneDelegate.swift */; };
+		F10EDE8E256A67C90052D562 /* TestingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE8D256A67C90052D562 /* TestingRootViewController.swift */; };
 		F11649262561213500AEBEFB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11649252561213500AEBEFB /* Name.swift */; };
 		F11649322561219C00AEBEFB /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11649312561219C00AEBEFB /* DataSet.swift */; };
 		F116493B2561234D00AEBEFB /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F116493A2561234D00AEBEFB /* List.swift */; };
@@ -42,10 +46,10 @@
 		F14A21E02540A50000310A13 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A21DF2540A50000310A13 /* AppDelegate.swift */; };
 		F14A21E22540A50000310A13 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A21E12540A50000310A13 /* SceneDelegate.swift */; };
 		F14A21EC2540A50200310A13 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F14A21EA2540A50200310A13 /* LaunchScreen.storyboard */; };
-		F14A21F72540A50200310A13 /* IamSnorlaxTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A21F62540A50200310A13 /* IamSnorlaxTests.swift */; };
 		F14A22022540A50300310A13 /* IamSnorlaxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A22012540A50300310A13 /* IamSnorlaxUITests.swift */; };
 		F14A23072540ADF500310A13 /* BusinessConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A23062540ADF500310A13 /* BusinessConstants.swift */; };
 		F14A230F2540AE2D00310A13 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A230E2540AE2D00310A13 /* String+Extensions.swift */; };
+		F159DB6D25697F0200ABDAB9 /* GenerationRespositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159DB6C25697F0200ABDAB9 /* GenerationRespositoryTest.swift */; };
 		F163CEE9254430B9000904EE /* VersionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F163CEE3254430B9000904EE /* VersionList.storyboard */; };
 		F163CEEA254430B9000904EE /* VersionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F163CEE4254430B9000904EE /* VersionListPresenter.swift */; };
 		F163CEEB254430B9000904EE /* VersionListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F163CEE5254430B9000904EE /* VersionListRouter.swift */; };
@@ -82,6 +86,10 @@
 		F18B570F2546B3EE0057A61D /* pokemon-font.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F18B570E2546B3EE0057A61D /* pokemon-font.ttf */; };
 		F18B572625473E180057A61D /* VersionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F18B572525473E180057A61D /* VersionCell.swift */; };
 		F1D3026225432608000F3283 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F16EB73A2542A77300FA27A6 /* Resource.swift */; };
+		F1ECBB972569E024008C187D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBB962569E024008C187D /* GeneratedMocks.swift */; };
+		F1ECBBA92569E75F008C187D /* GenerationListInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBBA82569E75F008C187D /* GenerationListInteractorTest.swift */; };
+		F1ECBBAE2569E773008C187D /* GenerationListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBBAD2569E773008C187D /* GenerationListPresenterTest.swift */; };
+		F1ECBBB32569E787008C187D /* GenerationListRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBBB22569E787008C187D /* GenerationListRouterTest.swift */; };
 		F1FB82E5254AA2D900F34319 /* PokemonStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FB82E4254AA2D900F34319 /* PokemonStat.swift */; };
 		F8BECAD3C5937C4FF54EE907 /* Pods_IamSnorlaxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79CB9DCE15B4DF3857C8886 /* Pods_IamSnorlaxTests.framework */; };
 /* End PBXBuildFile section */
@@ -111,6 +119,10 @@
 		D9E33E3C6ED4891A3CB652E6 /* Pods-IamSnorlax.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IamSnorlax.debug.xcconfig"; path = "Target Support Files/Pods-IamSnorlax/Pods-IamSnorlax.debug.xcconfig"; sourceTree = "<group>"; };
 		DBEA2F43F28431B5A2A8C9C2 /* Pods-IamSnorlaxTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IamSnorlaxTests.debug.xcconfig"; path = "Target Support Files/Pods-IamSnorlaxTests/Pods-IamSnorlaxTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E9D3C38B3ADA43AAD3A0A15D /* Pods_IamSnorlax.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IamSnorlax.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F10EDE72256A66430052D562 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		F10EDE77256A67120052D562 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
+		F10EDE82256A67380052D562 /* TestingSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSceneDelegate.swift; sourceTree = "<group>"; };
+		F10EDE8D256A67C90052D562 /* TestingRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingRootViewController.swift; sourceTree = "<group>"; };
 		F11649252561213500AEBEFB /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		F11649312561219C00AEBEFB /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
 		F116493A2561234D00AEBEFB /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -148,13 +160,13 @@
 		F14A21EB2540A50200310A13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F14A21ED2540A50200310A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14A21F22540A50200310A13 /* IamSnorlaxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IamSnorlaxTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F14A21F62540A50200310A13 /* IamSnorlaxTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IamSnorlaxTests.swift; sourceTree = "<group>"; };
 		F14A21F82540A50200310A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14A21FD2540A50300310A13 /* IamSnorlaxUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IamSnorlaxUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F14A22012540A50300310A13 /* IamSnorlaxUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IamSnorlaxUITests.swift; sourceTree = "<group>"; };
 		F14A22032540A50300310A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14A23062540ADF500310A13 /* BusinessConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessConstants.swift; sourceTree = "<group>"; };
 		F14A230E2540AE2D00310A13 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		F159DB6C25697F0200ABDAB9 /* GenerationRespositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationRespositoryTest.swift; sourceTree = "<group>"; };
 		F163CEE3254430B9000904EE /* VersionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionList.storyboard; sourceTree = "<group>"; };
 		F163CEE4254430B9000904EE /* VersionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionListPresenter.swift; sourceTree = "<group>"; };
 		F163CEE5254430B9000904EE /* VersionListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionListRouter.swift; sourceTree = "<group>"; };
@@ -191,6 +203,10 @@
 		F18B56F22545A0370057A61D /* GenerationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationCell.swift; sourceTree = "<group>"; };
 		F18B570E2546B3EE0057A61D /* pokemon-font.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "pokemon-font.ttf"; sourceTree = "<group>"; };
 		F18B572525473E180057A61D /* VersionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionCell.swift; sourceTree = "<group>"; };
+		F1ECBB962569E024008C187D /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
+		F1ECBBA82569E75F008C187D /* GenerationListInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationListInteractorTest.swift; sourceTree = "<group>"; };
+		F1ECBBAD2569E773008C187D /* GenerationListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationListPresenterTest.swift; sourceTree = "<group>"; };
+		F1ECBBB22569E787008C187D /* GenerationListRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationListRouterTest.swift; sourceTree = "<group>"; };
 		F1FB82E4254AA2D900F34319 /* PokemonStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonStat.swift; sourceTree = "<group>"; };
 		F79CB9DCE15B4DF3857C8886 /* Pods_IamSnorlaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IamSnorlaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB07A4C7C8EC42A79B1D888 /* Pods_IamSnorlax_IamSnorlaxUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IamSnorlax_IamSnorlaxUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -429,6 +445,7 @@
 				F14A22D02540ACD300310A13 /* domain */,
 				F14A22CF2540ACCF00310A13 /* ui */,
 				F1224E5A254B4F7A0031F028 /* Assets.xcassets */,
+				F10EDE72256A66430052D562 /* main.swift */,
 				F14A21DF2540A50000310A13 /* AppDelegate.swift */,
 				F14A21E12540A50000310A13 /* SceneDelegate.swift */,
 				F14A21EA2540A50200310A13 /* LaunchScreen.storyboard */,
@@ -441,7 +458,11 @@
 		F14A21F52540A50200310A13 /* IamSnorlaxTests */ = {
 			isa = PBXGroup;
 			children = (
-				F14A21F62540A50200310A13 /* IamSnorlaxTests.swift */,
+				F1ECBBA02569E6EF008C187D /* modules */,
+				F1ECBB962569E024008C187D /* GeneratedMocks.swift */,
+				F10EDE77256A67120052D562 /* TestingAppDelegate.swift */,
+				F10EDE82256A67380052D562 /* TestingSceneDelegate.swift */,
+				F10EDE8D256A67C90052D562 /* TestingRootViewController.swift */,
 				F14A21F82540A50200310A13 /* Info.plist */,
 			);
 			path = IamSnorlaxTests;
@@ -753,7 +774,7 @@
 		F16EB5EF25415C0400FA27A6 /* generationList */ = {
 			isa = PBXGroup;
 			children = (
-				F16EB60A25415C3F00FA27A6 /* route */,
+				F16EB60A25415C3F00FA27A6 /* router */,
 				F16EB60925415C3900FA27A6 /* presenter */,
 				F16EB60825415C3400FA27A6 /* interactor */,
 				F16EB60725415C3100FA27A6 /* view */,
@@ -804,12 +825,12 @@
 			path = presenter;
 			sourceTree = "<group>";
 		};
-		F16EB60A25415C3F00FA27A6 /* route */ = {
+		F16EB60A25415C3F00FA27A6 /* router */ = {
 			isa = PBXGroup;
 			children = (
 				F16EB5F225415C1700FA27A6 /* GenerationListRouter.swift */,
 			);
-			path = route;
+			path = router;
 			sourceTree = "<group>";
 		};
 		F16EB7132542A23000FA27A6 /* pokemon */ = {
@@ -937,6 +958,25 @@
 			path = repository;
 			sourceTree = "<group>";
 		};
+		F1ECBBA02569E6EF008C187D /* modules */ = {
+			isa = PBXGroup;
+			children = (
+				F1ECBBA12569E6F9008C187D /* generationList */,
+			);
+			path = modules;
+			sourceTree = "<group>";
+		};
+		F1ECBBA12569E6F9008C187D /* generationList */ = {
+			isa = PBXGroup;
+			children = (
+				F159DB6C25697F0200ABDAB9 /* GenerationRespositoryTest.swift */,
+				F1ECBBB22569E787008C187D /* GenerationListRouterTest.swift */,
+				F1ECBBAD2569E773008C187D /* GenerationListPresenterTest.swift */,
+				F1ECBBA82569E75F008C187D /* GenerationListInteractorTest.swift */,
+			);
+			path = generationList;
+			sourceTree = "<group>";
+		};
 		F1FB830C254AAA2400F34319 /* pokemon */ = {
 			isa = PBXGroup;
 			children = (
@@ -1019,6 +1059,7 @@
 			buildConfigurationList = F14A22092540A50300310A13 /* Build configuration list for PBXNativeTarget "IamSnorlaxTests" */;
 			buildPhases = (
 				2547F09E695A97E1FCE25CC2 /* [CP] Check Pods Manifest.lock */,
+				F159DB7425697F7300ABDAB9 /* Cuckoo Run Script */,
 				F14A21EE2540A50200310A13 /* Sources */,
 				F14A21EF2540A50200310A13 /* Frameworks */,
 				F14A21F02540A50200310A13 /* Resources */,
@@ -1265,6 +1306,24 @@
 			shellPath = /bin/sh;
 			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		F159DB7425697F7300ABDAB9 /* Cuckoo Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Cuckoo Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/ui/modules/generationList/router/GenerationListRouter.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/presenter/GenerationListPresenter.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/interactor/GenerationListInteractor.swift\" \\\n\"${INPUT_DIR}/business/repositories/generation/repository/GenerationRepository.swift\"\n#\"${INPUT_DIR}/FileName1.swift\" \\\n#\"${INPUT_DIR}/FileName2.swift\" \\\n#\"${INPUT_DIR}/FileName3.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1302,6 +1361,7 @@
 				F11F782A254752FE003F1F17 /* PokemonListRouter.swift in Sources */,
 				F163CEEC254430B9000904EE /* VersionListViewController.swift in Sources */,
 				F16EB6112541D8AD00FA27A6 /* Version.swift in Sources */,
+				F10EDE73256A66430052D562 /* main.swift in Sources */,
 				F14A23072540ADF500310A13 /* BusinessConstants.swift in Sources */,
 				F163CEED254430B9000904EE /* VersionListProtocols.swift in Sources */,
 				F11F7829254752FE003F1F17 /* PokemonListPresenter.swift in Sources */,
@@ -1343,7 +1403,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F14A21F72540A50200310A13 /* IamSnorlaxTests.swift in Sources */,
+				F1ECBBAE2569E773008C187D /* GenerationListPresenterTest.swift in Sources */,
+				F159DB6D25697F0200ABDAB9 /* GenerationRespositoryTest.swift in Sources */,
+				F1ECBBB32569E787008C187D /* GenerationListRouterTest.swift in Sources */,
+				F10EDE8E256A67C90052D562 /* TestingRootViewController.swift in Sources */,
+				F10EDE78256A67120052D562 /* TestingAppDelegate.swift in Sources */,
+				F1ECBBA92569E75F008C187D /* GenerationListInteractorTest.swift in Sources */,
+				F1ECBB972569E024008C187D /* GeneratedMocks.swift in Sources */,
+				F10EDE83256A67380052D562 /* TestingSceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
