@@ -39,6 +39,8 @@ class VersionListPresenter: ViewToPresenterVersionListProtocol {
                     self.groups.append(contentsOf: fetchedGroups)
                     self.loadVersions()
                 }
+            }, onError: { error in
+                self.versions.onError(IASError(title: "Error fetching groups", messages: nil, code: (error as? IASError)?.code))
             }).disposed(by: disposeBag)
         })
     }
@@ -55,6 +57,8 @@ class VersionListPresenter: ViewToPresenterVersionListProtocol {
                     self.versions.onNext(fetchedVersions)
                     self.versions.onCompleted()
                 }
+            }, onError: { error in
+                self.versions.onError(IASError(title: "Error fetching versions", messages: nil, code: (error as? IASError)?.code))
             }).disposed(by: disposeBag)
         })
     }

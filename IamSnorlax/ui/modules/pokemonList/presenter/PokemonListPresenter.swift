@@ -42,6 +42,8 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
                     self.pokedexes = fetchedPokedexes
                     self.loadPokemons(page: 1)
                 }
+            }, onError: { error in
+                self.pokemons.onError(IASError(title: "Error fetching pokedex", messages: nil, code: (error as? IASError)?.code))
             }).disposed(by: disposeBag)
         }
     }
@@ -70,6 +72,8 @@ class PokemonListPresenter: ViewToPresenterPokemonListProtocol {
                     self.pokemons.onNext(fetchedPokemons)
                     self.pokemons.onCompleted()
                 }
+            }, onError: { error in
+                self.pokemons.onError(IASError(title: "Error fetching pokemons", messages: nil, code: (error as? IASError)?.code))
             }).disposed(by: disposeBag)
         }
     }

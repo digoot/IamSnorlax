@@ -14,3 +14,4 @@
 "weight.label" = "Peso: %.02f kg";
 "height.label" = "Altura: %.02f m";
 "baseExperience.label" = "Exp. derrotándolo: %d xp";
+"error" = "Hubo un problema al realizar la petición.\n ¡Psyduck está tan confuso que se hiere a sí mismo!";

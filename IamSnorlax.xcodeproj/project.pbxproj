@@ -13,6 +13,7 @@
 		F10EDE78256A67120052D562 /* TestingAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE77256A67120052D562 /* TestingAppDelegate.swift */; };
 		F10EDE83256A67380052D562 /* TestingSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE82256A67380052D562 /* TestingSceneDelegate.swift */; };
 		F10EDE8E256A67C90052D562 /* TestingRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDE8D256A67C90052D562 /* TestingRootViewController.swift */; };
+		F10EDECA256BA8820052D562 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10EDEC9256BA8820052D562 /* ErrorView.swift */; };
 		F11649262561213500AEBEFB /* Name.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11649252561213500AEBEFB /* Name.swift */; };
 		F11649322561219C00AEBEFB /* DataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F11649312561219C00AEBEFB /* DataSet.swift */; };
 		F116493B2561234D00AEBEFB /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = F116493A2561234D00AEBEFB /* List.swift */; };
@@ -49,7 +50,6 @@
 		F14A22022540A50300310A13 /* IamSnorlaxUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A22012540A50300310A13 /* IamSnorlaxUITests.swift */; };
 		F14A23072540ADF500310A13 /* BusinessConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A23062540ADF500310A13 /* BusinessConstants.swift */; };
 		F14A230F2540AE2D00310A13 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F14A230E2540AE2D00310A13 /* String+Extensions.swift */; };
-		F159DB6D25697F0200ABDAB9 /* GenerationRespositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F159DB6C25697F0200ABDAB9 /* GenerationRespositoryTest.swift */; };
 		F163CEE9254430B9000904EE /* VersionList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F163CEE3254430B9000904EE /* VersionList.storyboard */; };
 		F163CEEA254430B9000904EE /* VersionListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F163CEE4254430B9000904EE /* VersionListPresenter.swift */; };
 		F163CEEB254430B9000904EE /* VersionListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F163CEE5254430B9000904EE /* VersionListRouter.swift */; };
@@ -89,7 +89,6 @@
 		F1ECBB972569E024008C187D /* GeneratedMocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBB962569E024008C187D /* GeneratedMocks.swift */; };
 		F1ECBBA92569E75F008C187D /* GenerationListInteractorTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBBA82569E75F008C187D /* GenerationListInteractorTest.swift */; };
 		F1ECBBAE2569E773008C187D /* GenerationListPresenterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBBAD2569E773008C187D /* GenerationListPresenterTest.swift */; };
-		F1ECBBB32569E787008C187D /* GenerationListRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1ECBBB22569E787008C187D /* GenerationListRouterTest.swift */; };
 		F1FB82E5254AA2D900F34319 /* PokemonStat.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1FB82E4254AA2D900F34319 /* PokemonStat.swift */; };
 		F8BECAD3C5937C4FF54EE907 /* Pods_IamSnorlaxTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F79CB9DCE15B4DF3857C8886 /* Pods_IamSnorlaxTests.framework */; };
 /* End PBXBuildFile section */
@@ -123,6 +122,7 @@
 		F10EDE77256A67120052D562 /* TestingAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingAppDelegate.swift; sourceTree = "<group>"; };
 		F10EDE82256A67380052D562 /* TestingSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingSceneDelegate.swift; sourceTree = "<group>"; };
 		F10EDE8D256A67C90052D562 /* TestingRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingRootViewController.swift; sourceTree = "<group>"; };
+		F10EDEC9256BA8820052D562 /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		F11649252561213500AEBEFB /* Name.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Name.swift; sourceTree = "<group>"; };
 		F11649312561219C00AEBEFB /* DataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSet.swift; sourceTree = "<group>"; };
 		F116493A2561234D00AEBEFB /* List.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
@@ -166,7 +166,6 @@
 		F14A22032540A50300310A13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F14A23062540ADF500310A13 /* BusinessConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessConstants.swift; sourceTree = "<group>"; };
 		F14A230E2540AE2D00310A13 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
-		F159DB6C25697F0200ABDAB9 /* GenerationRespositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationRespositoryTest.swift; sourceTree = "<group>"; };
 		F163CEE3254430B9000904EE /* VersionList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = VersionList.storyboard; sourceTree = "<group>"; };
 		F163CEE4254430B9000904EE /* VersionListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionListPresenter.swift; sourceTree = "<group>"; };
 		F163CEE5254430B9000904EE /* VersionListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VersionListRouter.swift; sourceTree = "<group>"; };
@@ -206,7 +205,6 @@
 		F1ECBB962569E024008C187D /* GeneratedMocks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneratedMocks.swift; sourceTree = "<group>"; };
 		F1ECBBA82569E75F008C187D /* GenerationListInteractorTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationListInteractorTest.swift; sourceTree = "<group>"; };
 		F1ECBBAD2569E773008C187D /* GenerationListPresenterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationListPresenterTest.swift; sourceTree = "<group>"; };
-		F1ECBBB22569E787008C187D /* GenerationListRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerationListRouterTest.swift; sourceTree = "<group>"; };
 		F1FB82E4254AA2D900F34319 /* PokemonStat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonStat.swift; sourceTree = "<group>"; };
 		F79CB9DCE15B4DF3857C8886 /* Pods_IamSnorlaxTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IamSnorlaxTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FDB07A4C7C8EC42A79B1D888 /* Pods_IamSnorlax_IamSnorlaxUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IamSnorlax_IamSnorlaxUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +249,22 @@
 				1A86FF2CDFD77A91859AF61D /* Pods-IamSnorlaxTests.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		F10EDEC7256BA8660052D562 /* common */ = {
+			isa = PBXGroup;
+			children = (
+				F10EDEC8256BA8690052D562 /* error */,
+			);
+			path = common;
+			sourceTree = "<group>";
+		};
+		F10EDEC8256BA8690052D562 /* error */ = {
+			isa = PBXGroup;
+			children = (
+				F10EDEC9256BA8820052D562 /* ErrorView.swift */,
+			);
+			path = error;
 			sourceTree = "<group>";
 		};
 		F11649242561212200AEBEFB /* names */ = {
@@ -569,6 +583,7 @@
 		F14A22D82540AD1A00310A13 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				F10EDEC7256BA8660052D562 /* common */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -969,8 +984,6 @@
 		F1ECBBA12569E6F9008C187D /* generationList */ = {
 			isa = PBXGroup;
 			children = (
-				F159DB6C25697F0200ABDAB9 /* GenerationRespositoryTest.swift */,
-				F1ECBBB22569E787008C187D /* GenerationListRouterTest.swift */,
 				F1ECBBAD2569E773008C187D /* GenerationListPresenterTest.swift */,
 				F1ECBBA82569E75F008C187D /* GenerationListInteractorTest.swift */,
 			);
@@ -1322,7 +1335,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/ui/modules/generationList/router/GenerationListRouter.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/presenter/GenerationListPresenter.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/interactor/GenerationListInteractor.swift\" \\\n\"${INPUT_DIR}/business/repositories/generation/repository/GenerationRepository.swift\"\n#\"${INPUT_DIR}/FileName1.swift\" \\\n#\"${INPUT_DIR}/FileName2.swift\" \\\n#\"${INPUT_DIR}/FileName3.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n# Define output file. Change \"${PROJECT_DIR}/${PROJECT_NAME}Tests\" to your test's root source folder, if it's not the default name.\nOUTPUT_FILE=\"${PROJECT_DIR}/${PROJECT_NAME}Tests/GeneratedMocks.swift\"\necho \"Generated Mocks File = ${OUTPUT_FILE}\"\n\n# Define input directory. Change \"${PROJECT_DIR}/${PROJECT_NAME}\" to your project's root source folder, if it's not the default name.\nINPUT_DIR=\"${PROJECT_DIR}/${PROJECT_NAME}\"\necho \"Mocks Input Directory = ${INPUT_DIR}\"\n\n# Generate mock files, include as many input files as you'd like to create mocks for.\n\"${PODS_ROOT}/Cuckoo/run\" generate --testable \"${PROJECT_NAME}\" \\\n--output \"${OUTPUT_FILE}\" \\\n\"${INPUT_DIR}/ui/modules/generationList/router/GenerationListRouter.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/presenter/GenerationListPresenter.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/interactor/GenerationListInteractor.swift\" \\\n\"${INPUT_DIR}/ui/modules/generationList/view/GenerationListViewController.swift\"\n#\"${INPUT_DIR}/FileName1.swift\" \\\n#\"${INPUT_DIR}/FileName2.swift\" \\\n#\"${INPUT_DIR}/FileName3.swift\"\n# ... and so forth, the last line should never end with a backslash\n\n# After running once, locate `GeneratedMocks.swift` and drag it into your Xcode test target group.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1374,6 +1387,7 @@
 				F14221E6254A1B6500B1F96D /* PokemonDetailsInteractor.swift in Sources */,
 				F16EB5F825415C1700FA27A6 /* GenerationListRouter.swift in Sources */,
 				F16EB7602542A87500FA27A6 /* PokemonRepository.swift in Sources */,
+				F10EDECA256BA8820052D562 /* ErrorView.swift in Sources */,
 				F116493B2561234D00AEBEFB /* List.swift in Sources */,
 				F16EB7512542A85000FA27A6 /* GroupAssembler.swift in Sources */,
 				F16EB5FA25415C1700FA27A6 /* GenerationListProtocols.swift in Sources */,
@@ -1404,8 +1418,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F1ECBBAE2569E773008C187D /* GenerationListPresenterTest.swift in Sources */,
-				F159DB6D25697F0200ABDAB9 /* GenerationRespositoryTest.swift in Sources */,
-				F1ECBBB32569E787008C187D /* GenerationListRouterTest.swift in Sources */,
 				F10EDE8E256A67C90052D562 /* TestingRootViewController.swift in Sources */,
 				F10EDE78256A67120052D562 /* TestingAppDelegate.swift in Sources */,
 				F1ECBBA92569E75F008C187D /* GenerationListInteractorTest.swift in Sources */,

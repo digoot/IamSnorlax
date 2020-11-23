@@ -28,6 +28,8 @@ class PokemonDetailsViewController: UIViewController {
     var baseExperienceLabel = UILabel()
     var disposeBag = DisposeBag()
     let font = Font(ofSize: 15).build()
+    let backgroundIndicator = UIView()
+    let activityIndicator = UIActivityIndicatorView()
     
     // MARK: Outlets
     
@@ -41,7 +43,7 @@ class PokemonDetailsViewController: UIViewController {
     
     // MARK: Functions
     
-    func setupView() {
+    fileprivate func setupView() {
         guard
             let pokemon = presenter?.pokemon,
             let locale = UIConstants.shared.locale
@@ -57,21 +59,8 @@ class PokemonDetailsViewController: UIViewController {
         scrollView.addSubview(verticalStack)
         verticalStack.addArrangedSubview(pokemonDescriptionLabel)
         imageView.backgroundColor = UIColor(named: "primary-light")
-        pokemonDescriptionLabel.text = pokemon.descriptions.filter({ $0.language?.name == locale }).first?.text
         pokemonDescriptionLabel.numberOfLines = 0
         pokemonDescriptionLabel.font = Font(ofSize: 15).build()
-        if let isBaby = pokemon.baby, isBaby {
-            verticalStack.addArrangedSubview(babyLabel)
-            babyLabel.text = I18n.getString("baby.label")
-        }
-        if let isLegendary = pokemon.legendary, isLegendary {
-            verticalStack.addArrangedSubview(legendaryLabel)
-            legendaryLabel.text = I18n.getString("legendary.label")
-        }
-        if let isMythical = pokemon.mythical, isMythical {
-            verticalStack.addArrangedSubview(mythicalLabel)
-            mythicalLabel.text = I18n.getString("mythical.label")
-        }
         babyLabel.font = font
         babyLabel.textColor = UIColor.red
         legendaryLabel.font = font
@@ -81,6 +70,9 @@ class PokemonDetailsViewController: UIViewController {
         heightLabel.font = font
         weightLabel.font = font
         baseExperienceLabel.font = font
+        backgroundIndicator.frame = view.frame
+        backgroundIndicator.backgroundColor = UIConstants.shared.backgroundColor
+        startIndicator(view: view)
         setupConstraints()
         setupBindings()
     }
@@ -102,6 +94,47 @@ class PokemonDetailsViewController: UIViewController {
         }
     }
     
+    fileprivate func setupData(pokemon: Pokemon) {
+        guard let locale = UIConstants.shared.locale else { return }
+        imageView.setImage(
+            with: pokemon.sprites?.other?.artWork?.frontDefault?.absoluteString,
+            placeholder: UIImage(named: "placeholder")
+        )
+        pokemonDescriptionLabel.text = presenter?.pokemon?.descriptions.filter({ $0.language?.name == locale }).first?.text
+        heightLabel.text = I18n.getString("height.label", CGFloat(pokemon.height ?? 0) / 10)
+        verticalStack.addArrangedSubview(self.heightLabel)
+        weightLabel.text = I18n.getString("weight.label", CGFloat(pokemon.weight ?? 0) / 10)
+        verticalStack.addArrangedSubview(self.weightLabel)
+        baseExperienceLabel.text = I18n.getString("baseExperience.label", pokemon.baseExperience ?? 0)
+        verticalStack.addArrangedSubview(self.baseExperienceLabel)
+        if let isBaby = presenter?.pokemon?.baby, isBaby {
+            verticalStack.addArrangedSubview(babyLabel)
+            babyLabel.text = I18n.getString("baby.label")
+        }
+        if let isLegendary = presenter?.pokemon?.legendary, isLegendary {
+            verticalStack.addArrangedSubview(legendaryLabel)
+            legendaryLabel.text = I18n.getString("legendary.label")
+        }
+        if let isMythical = presenter?.pokemon?.mythical, isMythical {
+            verticalStack.addArrangedSubview(mythicalLabel)
+            mythicalLabel.text = I18n.getString("mythical.label")
+        }
+    }
+    
+    fileprivate func startIndicator(view: UIView) {
+        activityIndicator.frame = view.frame
+        activityIndicator.style = .large
+        activityIndicator.startAnimating()
+        view.addSubview(backgroundIndicator)
+        view.addSubview(activityIndicator)
+    }
+    
+    fileprivate func stopIndicator() {
+        activityIndicator.stopAnimating()
+        backgroundIndicator.removeFromSuperview()
+        activityIndicator.removeFromSuperview()
+    }
+    
     fileprivate func setupBindings() {
         setupPokemonsBinding()
     }
@@ -113,16 +146,12 @@ extension PokemonDetailsViewController {
     fileprivate func setupPokemonsBinding() {
         presenter?.fetchedInfo.subscribe(onNext: { pokemon in
             guard let pokemon = pokemon else { return }
-            self.imageView.setImage(
-                with: pokemon.sprites?.other?.artWork?.frontDefault?.absoluteString,
-                placeholder: UIImage(named: "placeholder")
-            )
-            self.heightLabel.text = I18n.getString("height.label", CGFloat(pokemon.height ?? 0) / 10)
-            self.verticalStack.addArrangedSubview(self.heightLabel)
-            self.weightLabel.text = I18n.getString("weight.label", CGFloat(pokemon.weight ?? 0) / 10)
-            self.verticalStack.addArrangedSubview(self.weightLabel)
-            self.baseExperienceLabel.text = I18n.getString("baseExperience.label", pokemon.baseExperience ?? 0)
-            self.verticalStack.addArrangedSubview(self.baseExperienceLabel)
+            self.stopIndicator()
+            self.setupData(pokemon: pokemon)
+        }, onError: { _ in
+            self.stopIndicator()
+            self.view.addSubview(self.backgroundIndicator)
+            ErrorView().showIn(self.view)
         }).disposed(by: disposeBag)
     }
 }

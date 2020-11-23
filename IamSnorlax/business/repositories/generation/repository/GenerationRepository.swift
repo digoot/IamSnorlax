@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 import RxSwift
 
-class GenerationRepository {
+final class GenerationRepository {
     func fetchGenerations() -> PublishSubject<[String]?> {
         return GenerationListResource().result
     }
@@ -18,7 +18,7 @@ class GenerationRepository {
     }
 }
 
-class GenerationListResource: Resource<[String]> {
+final class GenerationListResource: Resource<[String]> {
     override func fetchFromWebService() -> DataRequest? {
         return ApiManager.shared.api.fetchGenerations()
     }
@@ -28,7 +28,7 @@ class GenerationListResource: Resource<[String]> {
     }
 }
 
-class GenerationResource: Resource<Generation> {
+final class GenerationResource: Resource<Generation> {
     let id: String
     
     init(id: String) {

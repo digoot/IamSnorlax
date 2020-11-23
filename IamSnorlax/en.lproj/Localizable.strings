@@ -14,3 +14,4 @@
 "weight.label" = "Weight: %d hg";
 "height.label" = "Height: %d dm";
 "baseExperience.label" = "Exp. defeating: %d xp";
+"error" = "There was a problem making the request.\n Psyduck hurt Itself in Its Confusion!";

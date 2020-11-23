@@ -1,383 +1,4 @@
-// MARK: - Mocks generated from file: IamSnorlax/business/repositories/generation/repository/GenerationRepository.swift at 2020-11-22 10:09:48 +0000
-
-//
-//  GenerationRepository.swift
-//  IamSnorlax
-//
-//  Created by Diego Otero Mata on 23/10/2020.
-//
-
-import Cuckoo
-@testable import IamSnorlax
-
-import Alamofire
-import Foundation
-import RxSwift
-
-
- class MockGenerationRepository: GenerationRepository, Cuckoo.ClassMock {
-    
-     typealias MocksType = GenerationRepository
-    
-     typealias Stubbing = __StubbingProxy_GenerationRepository
-     typealias Verification = __VerificationProxy_GenerationRepository
-
-     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
-
-    
-    private var __defaultImplStub: GenerationRepository?
-
-     func enableDefaultImplementation(_ stub: GenerationRepository) {
-        __defaultImplStub = stub
-        cuckoo_manager.enableDefaultStubImplementation()
-    }
-    
-
-    
-
-    
-
-    
-    
-    
-     override func fetchGenerations() -> PublishSubject<[String]?> {
-        
-    return cuckoo_manager.call("fetchGenerations() -> PublishSubject<[String]?>",
-            parameters: (),
-            escapingParameters: (),
-            superclassCall:
-                
-                super.fetchGenerations()
-                ,
-            defaultCall: __defaultImplStub!.fetchGenerations())
-        
-    }
-    
-    
-    
-     override func fetchGenerationWith(id: String) -> PublishSubject<Generation?> {
-        
-    return cuckoo_manager.call("fetchGenerationWith(id: String) -> PublishSubject<Generation?>",
-            parameters: (id),
-            escapingParameters: (id),
-            superclassCall:
-                
-                super.fetchGenerationWith(id: id)
-                ,
-            defaultCall: __defaultImplStub!.fetchGenerationWith(id: id))
-        
-    }
-    
-
-	 struct __StubbingProxy_GenerationRepository: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	     init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func fetchGenerations() -> Cuckoo.ClassStubFunction<(), PublishSubject<[String]?>> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationRepository.self, method: "fetchGenerations() -> PublishSubject<[String]?>", parameterMatchers: matchers))
-	    }
-	    
-	    func fetchGenerationWith<M1: Cuckoo.Matchable>(id: M1) -> Cuckoo.ClassStubFunction<(String), PublishSubject<Generation?>> where M1.MatchedType == String {
-	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationRepository.self, method: "fetchGenerationWith(id: String) -> PublishSubject<Generation?>", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	 struct __VerificationProxy_GenerationRepository: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func fetchGenerations() -> Cuckoo.__DoNotUse<(), PublishSubject<[String]?>> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("fetchGenerations() -> PublishSubject<[String]?>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func fetchGenerationWith<M1: Cuckoo.Matchable>(id: M1) -> Cuckoo.__DoNotUse<(String), PublishSubject<Generation?>> where M1.MatchedType == String {
-	        let matchers: [Cuckoo.ParameterMatcher<(String)>] = [wrap(matchable: id) { $0 }]
-	        return cuckoo_manager.verify("fetchGenerationWith(id: String) -> PublishSubject<Generation?>", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-}
-
- class GenerationRepositoryStub: GenerationRepository {
-    
-
-    
-
-    
-     override func fetchGenerations() -> PublishSubject<[String]?>  {
-        return DefaultValueRegistry.defaultValue(for: (PublishSubject<[String]?>).self)
-    }
-    
-     override func fetchGenerationWith(id: String) -> PublishSubject<Generation?>  {
-        return DefaultValueRegistry.defaultValue(for: (PublishSubject<Generation?>).self)
-    }
-    
-}
-
-
-
- class MockGenerationListResource: GenerationListResource, Cuckoo.ClassMock {
-    
-     typealias MocksType = GenerationListResource
-    
-     typealias Stubbing = __StubbingProxy_GenerationListResource
-     typealias Verification = __VerificationProxy_GenerationListResource
-
-     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
-
-    
-    private var __defaultImplStub: GenerationListResource?
-
-     func enableDefaultImplementation(_ stub: GenerationListResource) {
-        __defaultImplStub = stub
-        cuckoo_manager.enableDefaultStubImplementation()
-    }
-    
-
-    
-
-    
-
-    
-    
-    
-     override func fetchFromWebService() -> DataRequest? {
-        
-    return cuckoo_manager.call("fetchFromWebService() -> DataRequest?",
-            parameters: (),
-            escapingParameters: (),
-            superclassCall:
-                
-                super.fetchFromWebService()
-                ,
-            defaultCall: __defaultImplStub!.fetchFromWebService())
-        
-    }
-    
-    
-    
-     override func convertToObject(with response: AFDataResponse<Any>) -> [String]? {
-        
-    return cuckoo_manager.call("convertToObject(with: AFDataResponse<Any>) -> [String]?",
-            parameters: (response),
-            escapingParameters: (response),
-            superclassCall:
-                
-                super.convertToObject(with: response)
-                ,
-            defaultCall: __defaultImplStub!.convertToObject(with: response))
-        
-    }
-    
-
-	 struct __StubbingProxy_GenerationListResource: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	     init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func fetchFromWebService() -> Cuckoo.ClassStubFunction<(), DataRequest?> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationListResource.self, method: "fetchFromWebService() -> DataRequest?", parameterMatchers: matchers))
-	    }
-	    
-	    func convertToObject<M1: Cuckoo.Matchable>(with response: M1) -> Cuckoo.ClassStubFunction<(AFDataResponse<Any>), [String]?> where M1.MatchedType == AFDataResponse<Any> {
-	        let matchers: [Cuckoo.ParameterMatcher<(AFDataResponse<Any>)>] = [wrap(matchable: response) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationListResource.self, method: "convertToObject(with: AFDataResponse<Any>) -> [String]?", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	 struct __VerificationProxy_GenerationListResource: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func fetchFromWebService() -> Cuckoo.__DoNotUse<(), DataRequest?> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("fetchFromWebService() -> DataRequest?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func convertToObject<M1: Cuckoo.Matchable>(with response: M1) -> Cuckoo.__DoNotUse<(AFDataResponse<Any>), [String]?> where M1.MatchedType == AFDataResponse<Any> {
-	        let matchers: [Cuckoo.ParameterMatcher<(AFDataResponse<Any>)>] = [wrap(matchable: response) { $0 }]
-	        return cuckoo_manager.verify("convertToObject(with: AFDataResponse<Any>) -> [String]?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-}
-
- class GenerationListResourceStub: GenerationListResource {
-    
-
-    
-
-    
-     override func fetchFromWebService() -> DataRequest?  {
-        return DefaultValueRegistry.defaultValue(for: (DataRequest?).self)
-    }
-    
-     override func convertToObject(with response: AFDataResponse<Any>) -> [String]?  {
-        return DefaultValueRegistry.defaultValue(for: ([String]?).self)
-    }
-    
-}
-
-
-
- class MockGenerationResource: GenerationResource, Cuckoo.ClassMock {
-    
-     typealias MocksType = GenerationResource
-    
-     typealias Stubbing = __StubbingProxy_GenerationResource
-     typealias Verification = __VerificationProxy_GenerationResource
-
-     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
-
-    
-    private var __defaultImplStub: GenerationResource?
-
-     func enableDefaultImplementation(_ stub: GenerationResource) {
-        __defaultImplStub = stub
-        cuckoo_manager.enableDefaultStubImplementation()
-    }
-    
-
-    
-
-    
-
-    
-    
-    
-     override func fetchFromWebService() -> DataRequest? {
-        
-    return cuckoo_manager.call("fetchFromWebService() -> DataRequest?",
-            parameters: (),
-            escapingParameters: (),
-            superclassCall:
-                
-                super.fetchFromWebService()
-                ,
-            defaultCall: __defaultImplStub!.fetchFromWebService())
-        
-    }
-    
-    
-    
-     override func convertToObject(with response: AFDataResponse<Any>) -> Generation? {
-        
-    return cuckoo_manager.call("convertToObject(with: AFDataResponse<Any>) -> Generation?",
-            parameters: (response),
-            escapingParameters: (response),
-            superclassCall:
-                
-                super.convertToObject(with: response)
-                ,
-            defaultCall: __defaultImplStub!.convertToObject(with: response))
-        
-    }
-    
-
-	 struct __StubbingProxy_GenerationResource: Cuckoo.StubbingProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	
-	     init(manager: Cuckoo.MockManager) {
-	        self.cuckoo_manager = manager
-	    }
-	    
-	    
-	    func fetchFromWebService() -> Cuckoo.ClassStubFunction<(), DataRequest?> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationResource.self, method: "fetchFromWebService() -> DataRequest?", parameterMatchers: matchers))
-	    }
-	    
-	    func convertToObject<M1: Cuckoo.Matchable>(with response: M1) -> Cuckoo.ClassStubFunction<(AFDataResponse<Any>), Generation?> where M1.MatchedType == AFDataResponse<Any> {
-	        let matchers: [Cuckoo.ParameterMatcher<(AFDataResponse<Any>)>] = [wrap(matchable: response) { $0 }]
-	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationResource.self, method: "convertToObject(with: AFDataResponse<Any>) -> Generation?", parameterMatchers: matchers))
-	    }
-	    
-	}
-
-	 struct __VerificationProxy_GenerationResource: Cuckoo.VerificationProxy {
-	    private let cuckoo_manager: Cuckoo.MockManager
-	    private let callMatcher: Cuckoo.CallMatcher
-	    private let sourceLocation: Cuckoo.SourceLocation
-	
-	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
-	        self.cuckoo_manager = manager
-	        self.callMatcher = callMatcher
-	        self.sourceLocation = sourceLocation
-	    }
-	
-	    
-	
-	    
-	    @discardableResult
-	    func fetchFromWebService() -> Cuckoo.__DoNotUse<(), DataRequest?> {
-	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
-	        return cuckoo_manager.verify("fetchFromWebService() -> DataRequest?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	    @discardableResult
-	    func convertToObject<M1: Cuckoo.Matchable>(with response: M1) -> Cuckoo.__DoNotUse<(AFDataResponse<Any>), Generation?> where M1.MatchedType == AFDataResponse<Any> {
-	        let matchers: [Cuckoo.ParameterMatcher<(AFDataResponse<Any>)>] = [wrap(matchable: response) { $0 }]
-	        return cuckoo_manager.verify("convertToObject(with: AFDataResponse<Any>) -> Generation?", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
-	    }
-	    
-	}
-}
-
- class GenerationResourceStub: GenerationResource {
-    
-
-    
-
-    
-     override func fetchFromWebService() -> DataRequest?  {
-        return DefaultValueRegistry.defaultValue(for: (DataRequest?).self)
-    }
-    
-     override func convertToObject(with response: AFDataResponse<Any>) -> Generation?  {
-        return DefaultValueRegistry.defaultValue(for: (Generation?).self)
-    }
-    
-}
-
-
-// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/interactor/GenerationListInteractor.swift at 2020-11-22 10:09:48 +0000
+// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/interactor/GenerationListInteractor.swift at 2020-11-23 09:35:25 +0000
 
 //
 //  GenerationListInteractor.swift
@@ -556,7 +177,7 @@ import RxSwift
 }
 
 
-// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/presenter/GenerationListPresenter.swift at 2020-11-22 10:09:48 +0000
+// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/presenter/GenerationListPresenter.swift at 2020-11-23 09:35:25 +0000
 
 //
 //  GenerationListPresenter.swift
@@ -867,7 +488,7 @@ import RxSwift
 }
 
 
-// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/router/GenerationListRouter.swift at 2020-11-22 10:09:48 +0000
+// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/router/GenerationListRouter.swift at 2020-11-23 09:35:25 +0000
 
 //
 //  GenerationListRouter.swift
@@ -966,6 +587,307 @@ import UIKit
 
     
      override func navigateToVersionList(viewController: UIViewController, generation: Generation)   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+}
+
+
+// MARK: - Mocks generated from file: IamSnorlax/ui/modules/generationList/view/GenerationListViewController.swift at 2020-11-23 09:35:25 +0000
+
+//
+//  GenerationListViewController.swift
+//  IamSnorlax
+//
+//  Created by Diego Otero Mata on 22/10/2020.
+//
+
+import Cuckoo
+@testable import IamSnorlax
+
+import RxCocoa
+import RxDataSources
+import RxSwift
+import SnapKit
+import UIKit
+
+
+ class MockGenerationListViewController: GenerationListViewController, Cuckoo.ClassMock {
+    
+     typealias MocksType = GenerationListViewController
+    
+     typealias Stubbing = __StubbingProxy_GenerationListViewController
+     typealias Verification = __VerificationProxy_GenerationListViewController
+
+     let cuckoo_manager = Cuckoo.MockManager.preconfiguredManager ?? Cuckoo.MockManager(hasParent: true)
+
+    
+    private var __defaultImplStub: GenerationListViewController?
+
+     func enableDefaultImplementation(_ stub: GenerationListViewController) {
+        __defaultImplStub = stub
+        cuckoo_manager.enableDefaultStubImplementation()
+    }
+    
+
+    
+    
+    
+     override var presenter: ViewToPresenterGenerationListProtocol? {
+        get {
+            return cuckoo_manager.getter("presenter",
+                superclassCall:
+                    
+                    super.presenter
+                    ,
+                defaultCall: __defaultImplStub!.presenter)
+        }
+        
+        set {
+            cuckoo_manager.setter("presenter",
+                value: newValue,
+                superclassCall:
+                    
+                    super.presenter = newValue
+                    ,
+                defaultCall: __defaultImplStub!.presenter = newValue)
+        }
+        
+    }
+    
+    
+    
+     override var generationTable: UITableView? {
+        get {
+            return cuckoo_manager.getter("generationTable",
+                superclassCall:
+                    
+                    super.generationTable
+                    ,
+                defaultCall: __defaultImplStub!.generationTable)
+        }
+        
+        set {
+            cuckoo_manager.setter("generationTable",
+                value: newValue,
+                superclassCall:
+                    
+                    super.generationTable = newValue
+                    ,
+                defaultCall: __defaultImplStub!.generationTable = newValue)
+        }
+        
+    }
+    
+    
+    
+     override var dataSource: [Generation]? {
+        get {
+            return cuckoo_manager.getter("dataSource",
+                superclassCall:
+                    
+                    super.dataSource
+                    ,
+                defaultCall: __defaultImplStub!.dataSource)
+        }
+        
+        set {
+            cuckoo_manager.setter("dataSource",
+                value: newValue,
+                superclassCall:
+                    
+                    super.dataSource = newValue
+                    ,
+                defaultCall: __defaultImplStub!.dataSource = newValue)
+        }
+        
+    }
+    
+
+    
+
+    
+    
+    
+     override func viewDidLoad()  {
+        
+    return cuckoo_manager.call("viewDidLoad()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.viewDidLoad()
+                ,
+            defaultCall: __defaultImplStub!.viewDidLoad())
+        
+    }
+    
+    
+    
+     override func setupView()  {
+        
+    return cuckoo_manager.call("setupView()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.setupView()
+                ,
+            defaultCall: __defaultImplStub!.setupView())
+        
+    }
+    
+    
+    
+     override func refresh()  {
+        
+    return cuckoo_manager.call("refresh()",
+            parameters: (),
+            escapingParameters: (),
+            superclassCall:
+                
+                super.refresh()
+                ,
+            defaultCall: __defaultImplStub!.refresh())
+        
+    }
+    
+
+	 struct __StubbingProxy_GenerationListViewController: Cuckoo.StubbingProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	
+	     init(manager: Cuckoo.MockManager) {
+	        self.cuckoo_manager = manager
+	    }
+	    
+	    
+	    var presenter: Cuckoo.ClassToBeStubbedOptionalProperty<MockGenerationListViewController, ViewToPresenterGenerationListProtocol> {
+	        return .init(manager: cuckoo_manager, name: "presenter")
+	    }
+	    
+	    
+	    var generationTable: Cuckoo.ClassToBeStubbedOptionalProperty<MockGenerationListViewController, UITableView> {
+	        return .init(manager: cuckoo_manager, name: "generationTable")
+	    }
+	    
+	    
+	    var dataSource: Cuckoo.ClassToBeStubbedOptionalProperty<MockGenerationListViewController, [Generation]> {
+	        return .init(manager: cuckoo_manager, name: "dataSource")
+	    }
+	    
+	    
+	    func viewDidLoad() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationListViewController.self, method: "viewDidLoad()", parameterMatchers: matchers))
+	    }
+	    
+	    func setupView() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationListViewController.self, method: "setupView()", parameterMatchers: matchers))
+	    }
+	    
+	    func refresh() -> Cuckoo.ClassStubNoReturnFunction<()> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return .init(stub: cuckoo_manager.createStub(for: MockGenerationListViewController.self, method: "refresh()", parameterMatchers: matchers))
+	    }
+	    
+	}
+
+	 struct __VerificationProxy_GenerationListViewController: Cuckoo.VerificationProxy {
+	    private let cuckoo_manager: Cuckoo.MockManager
+	    private let callMatcher: Cuckoo.CallMatcher
+	    private let sourceLocation: Cuckoo.SourceLocation
+	
+	     init(manager: Cuckoo.MockManager, callMatcher: Cuckoo.CallMatcher, sourceLocation: Cuckoo.SourceLocation) {
+	        self.cuckoo_manager = manager
+	        self.callMatcher = callMatcher
+	        self.sourceLocation = sourceLocation
+	    }
+	
+	    
+	    
+	    var presenter: Cuckoo.VerifyOptionalProperty<ViewToPresenterGenerationListProtocol> {
+	        return .init(manager: cuckoo_manager, name: "presenter", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
+	    
+	    var generationTable: Cuckoo.VerifyOptionalProperty<UITableView> {
+	        return .init(manager: cuckoo_manager, name: "generationTable", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
+	    
+	    var dataSource: Cuckoo.VerifyOptionalProperty<[Generation]> {
+	        return .init(manager: cuckoo_manager, name: "dataSource", callMatcher: callMatcher, sourceLocation: sourceLocation)
+	    }
+	    
+	
+	    
+	    @discardableResult
+	    func viewDidLoad() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("viewDidLoad()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func setupView() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("setupView()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	    @discardableResult
+	    func refresh() -> Cuckoo.__DoNotUse<(), Void> {
+	        let matchers: [Cuckoo.ParameterMatcher<Void>] = []
+	        return cuckoo_manager.verify("refresh()", callMatcher: callMatcher, parameterMatchers: matchers, sourceLocation: sourceLocation)
+	    }
+	    
+	}
+}
+
+ class GenerationListViewControllerStub: GenerationListViewController {
+    
+    
+     override var presenter: ViewToPresenterGenerationListProtocol? {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (ViewToPresenterGenerationListProtocol?).self)
+        }
+        
+        set { }
+        
+    }
+    
+    
+     override var generationTable: UITableView? {
+        get {
+            return DefaultValueRegistry.defaultValue(for: (UITableView?).self)
+        }
+        
+        set { }
+        
+    }
+    
+    
+     override var dataSource: [Generation]? {
+        get {
+            return DefaultValueRegistry.defaultValue(for: ([Generation]?).self)
+        }
+        
+        set { }
+        
+    }
+    
+
+    
+
+    
+     override func viewDidLoad()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func setupView()   {
+        return DefaultValueRegistry.defaultValue(for: (Void).self)
+    }
+    
+     override func refresh()   {
         return DefaultValueRegistry.defaultValue(for: (Void).self)
     }
     

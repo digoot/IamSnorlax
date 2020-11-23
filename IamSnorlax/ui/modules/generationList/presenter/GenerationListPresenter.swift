@@ -36,8 +36,8 @@ class GenerationListPresenter: ViewToPresenterGenerationListProtocol {
                 return
             }
             self.loadGenerationsWith(ids: ids)
-        }, onError: { _ in
-            Log.print.error("Error")
+        }, onError: { error in
+            self.generations.onError(IASError(title: "Error fetching ids", messages: nil, code: (error as? IASError)?.code))
         }).disposed(by: disposeBag)
     }
     

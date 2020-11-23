@@ -98,6 +98,9 @@ extension VersionListViewController {
                 lhs.id < rhs.id
             })
             self.versionTable?.reloadData()
+        }, onError: { _ in
+            self.stopIndicator()
+            ErrorView().showIn(self.view)
         }).disposed(by: disposeBag)
     }
 }

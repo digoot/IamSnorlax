@@ -99,7 +99,8 @@ extension PokemonListViewController {
             self.dataSource.append(contentsOf: pokemons)
             self.pokemonTable?.reloadData()
         }, onError: { _ in
-            
+            self.stopIndicator()
+            ErrorView().showIn(self.view)
         }).disposed(by: disposeBag)
     }
 }

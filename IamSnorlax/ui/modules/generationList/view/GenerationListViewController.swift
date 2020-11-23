@@ -100,6 +100,9 @@ extension GenerationListViewController {
                 lhs.id < rhs.id
             })
             self.generationTable?.reloadData()
+        }, onError: { _ in
+            self.stopIndicator()
+            ErrorView().showIn(self.view)
         }).disposed(by: disposeBag)
     }
 }

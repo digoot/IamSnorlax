@@ -8,6 +8,7 @@
 import RxSwift
 
 class GenerationListInteractor: PresenterToInteractorGenerationListProtocol {
+    
     var disposeBag = DisposeBag()
     
     func fetchGenerations() -> PublishSubject<[String]?> {
@@ -18,6 +19,10 @@ class GenerationListInteractor: PresenterToInteractorGenerationListProtocol {
         let repository = GenerationRepository()
         let subject = PublishSubject<[Generation]?>()
         var generations = [Generation]()
+        guard !ids.isEmpty else {
+            subject.onError(IASError(title: "Empty ids", messages: nil, code: nil))
+            return subject
+        }
         ids.forEach{ id in
             repository.fetchGenerationWith(id: id).subscribe(onNext: { generation in
                 guard let generation = generation else { return }
